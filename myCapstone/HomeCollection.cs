@@ -4,12 +4,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using HomeTrackerDatamodelLibrary;//add this to all collections
+using HomeTrackerDatamodelLibrary;
 
 namespace HomeTrackerTest
 {
     class HomeCollection
-        : IEnumerator, IEnumerable
+        : IEnumerator<Home>, IEnumerable<Home>
     {
         private List<Home> _homes;
         int position = -1;
@@ -17,6 +17,15 @@ namespace HomeTrackerTest
         public HomeCollection()
         {
             _homes = new List<Home>();
+        }
+
+        public HomeCollection(List<Home> homes)
+        {
+            _homes = homes;
+            if (_homes.Count > 0 )
+            {
+                position = 0;
+            }
         }
 
         public Home Current => _homes[position];
@@ -38,7 +47,7 @@ namespace HomeTrackerTest
          //   throw new NotImplementedException();
         }
 
-        public IEnumerator GetEnumerator()
+        public IEnumerator<Home> GetEnumerator()
         {
             return this;
         }
@@ -55,7 +64,7 @@ namespace HomeTrackerTest
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            return (IEnumerator)this;
+            return ((IEnumerable<Home>)_homes).GetEnumerator();
         }
     }
 }

@@ -23,8 +23,21 @@ namespace HomeTrackerTest
             {
                 _peopleList = new List<T>();
             }
+            public void Sort()
+            {
+                _peopleList.Sort();
+            }
 
+            public int Count
+            {
+                get { return _peopleList.Count; }
+            }
 
+            public void Clear()
+            {
+                _peopleList.Clear();
+            }
+        
 
             public T Current => _peopleList[position];
 

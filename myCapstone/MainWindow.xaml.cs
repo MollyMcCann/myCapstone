@@ -30,9 +30,7 @@ namespace myCapstone
             using (HomeTrackerModel1 db = new HomeTrackerModel1())//move this to form load
             {
                 //retrieve data:
-                Home home = (from h in db.Homes
-                             select h).FirstOrDefault();
-                homeCollection.Add(home);
+                homeCollection = new HomeCollection(db.Homes.ToList());
             }
 
             foreach (Home home in homeCollection)
@@ -44,7 +42,16 @@ namespace myCapstone
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            //var homes = new List<Home>();
+            //foreach(Home h in homeCollection)
+            //{
+            //    homes.Add(h);
+            //}
             HomeDataGrid.DataContext = homeCollection;
+        }
+        private void exitButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -38,6 +38,20 @@ namespace HomeTrackerTest
                 _homeSales.Add(homeSales);
             }
         }
+        public int Count
+        {
+            get { return _homeSales.Count; }
+        }
+
+        public void Clear()
+        {
+            _homeSales.Clear();
+        }
+
+        public void Sort()
+        {
+            _homeSales.Sort();
+        }
 
         public void Dispose()
         {

@@ -33,6 +33,20 @@ namespace HomeTrackerTest
                 _realEstateCompanies.Add(realEstateCompany);
             }
         }
+        public int Count
+        {
+            get { return _realEstateCompanies.Count; }
+        }
+
+        public void Clear()
+        {
+            _realEstateCompanies.Clear();
+        }
+
+        public void Sort()
+        {
+            _realEstateCompanies.Sort();
+        }
         public void Dispose()
         {
            // throw new NotImplementedException();
