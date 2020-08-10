@@ -9,17 +9,18 @@ using HomeTrackerDatamodelLibrary;
 namespace myCapstone
 {
 
-    public class PeopleCollection<People>
-        : IEnumerator<People>, IEnumerable<People>
+    public class PeopleCollection<Person>
+        : IEnumerator<Person>, IEnumerable<Person>
+
         
         {
-            private List<People> _peopleList;
+            private List<Person> _peopleList;
             int position = -1;
             public PeopleCollection()
             {
-                _peopleList = new List<People>();
+                _peopleList = new List<Person>();
             }
-            public PeopleCollection(List<People> people)
+            public PeopleCollection(List<Person> people)
             {
                 _peopleList =people;
 
@@ -44,13 +45,13 @@ namespace myCapstone
             }
 
 
-            public People Current => _peopleList[position];
+            public Person Current => _peopleList[position];
 
             object IEnumerator.Current => _peopleList[position];
 
 
 
-            public void Add(People person)
+            public void Add(Person person)
             {
                 var p1 = _peopleList.SingleOrDefault(p => p.Id == person.Id);
                 if (p1 == null)
@@ -68,14 +69,14 @@ namespace myCapstone
 
 
 
-            public People Get(int id)//check in on this
+            public Person Get(int id)//check in on this
             {
                 return _peopleList.SingleOrDefault(p => p.Id == id);
             }
 
 
 
-            public IEnumerator<People> GetEnumerator()
+            public IEnumerator<Person> GetEnumerator()
             {
                 return this;
             }
@@ -98,12 +99,12 @@ namespace myCapstone
 
             //object IEnumerator.Current => throw new NotImplementedException();
 
-            public People this[int index]
+            public Person this[int index]
             {
                 get => _peopleList[index];
                 set => _peopleList[index] = value;
             }
-            IEnumerator<People> IEnumerable<People>.GetEnumerator()
+            IEnumerator<Person> IEnumerable<Person>.GetEnumerator()
             {
                 return _peopleList.GetEnumerator();
             }

@@ -22,8 +22,8 @@ namespace myCapstone
 
             //Public properties
             public PeopleCollection PeopleCollection { get { return _peopleCollection; } }
-        public HomeCollection HomeCollection => _bookCollection;
-        public CheckedOutCollection CheckedOutCollection { get { return _checkedOutCollection; } }
+        public HomeCollection HomeCollection { get { return _homeCollection; } }
+        public HomeSalesCollection HomeSalesCollection { get { return _checkedOutCollection; } }
 
             //Constructor
             public Collections()
