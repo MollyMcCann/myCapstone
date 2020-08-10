@@ -9,7 +9,7 @@ using HomeTrackerDatamodelLibrary;
 namespace HomeTrackerTest
 {
     class RealEstateCompanyCollection
-            : IEnumerator, IEnumerable
+            : IEnumerator<RealEstateCompany>, IEnumerable<RealEstateCompany>
     {
         private List<RealEstateCompany> _realEstateCompanies;
         int position = -1;
@@ -17,18 +17,21 @@ namespace HomeTrackerTest
         {
             _realEstateCompanies = new List<RealEstateCompany>();
         }
-
+        public RealEstateCompanyCollection(List<RealEstateCompany> realEstateCompanies)
+        {
+            _realEstateCompanies = realEstateCompanies;
+            if (_realEstateCompanies.Count > 0)
+            {
+                position = 0;
+            }
+        }
         public RealEstateCompany Current => _realEstateCompanies[position];
 
         object IEnumerator.Current => _realEstateCompanies[position];
-
-
-       
-
         public void Add(RealEstateCompany realEstateCompany)
         {
             var re = _realEstateCompanies.SingleOrDefault(r => r.CompanyID == realEstateCompany.CompanyID);
-            if (re == null)//the r here might give us trouble later
+            if (re == null)//the r here might give us trouble later CHECK THIS
             {
                 _realEstateCompanies.Add(realEstateCompany);
             }
@@ -52,7 +55,7 @@ namespace HomeTrackerTest
            // throw new NotImplementedException();
         }
 
-        public IEnumerator GetEnumerator()
+        public IEnumerator<RealEstateCompany> GetEnumerator()
         {
             return this;
         }

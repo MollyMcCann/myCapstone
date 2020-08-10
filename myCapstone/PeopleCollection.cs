@@ -10,7 +10,7 @@ namespace HomeTrackerTest
 {
     class PeopleCollection
     {
-       
+       // private List<HomeTrackerDatamodelLibrary.Person> lists;
         public class PeopleCollection1<T>
         : IEnumerator<T>, IEnumerable<T>
         where T : Person, IID
@@ -23,7 +23,8 @@ namespace HomeTrackerTest
             }
             public PeopleCollection1(List<T> people)
             {
-                _peopleList = people;
+                _peopleList =people;
+
                 if (_peopleList.Count > 0)
                 {
                     position = 0;
@@ -98,10 +99,10 @@ namespace HomeTrackerTest
 
 
 
-            IEnumerator IEnumerable.GetEnumerator()
-            {
-                return ((IEnumerable<Person>)_peopleList).GetEnumerator();
-            }
+            //IEnumerator IEnumerable.GetEnumerator()
+            //{
+            //    return ((IEnumerable<Person>)_peopleList).GetEnumerator();
+            //}
 
 
 
@@ -113,6 +114,15 @@ namespace HomeTrackerTest
             {
                 get => _peopleList[index];
                 set => _peopleList[index] = value;
+            }
+            IEnumerator<T> IEnumerable<T>.GetEnumerator()
+            {
+                return _peopleList.GetEnumerator();
+            }
+
+            System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+            {
+                return _peopleList.GetEnumerator();
             }
         }
 
@@ -156,37 +166,6 @@ namespace HomeTrackerTest
         {
             public int Id { get; set; }
         }
-
-        //class Program
-        //{
-        //private static void Main(string[] args)//cant have main again as it is the 
-        //    //entry point in  Program class so get that sorted
-        //    {
-        //        var peopleCollection = new PeopleCollection<Person>();
-        //        peopleCollection.Add(new Agent() { Id = 1 });
-        //        peopleCollection.Add(new Owner() { Id = 2 });
-        //        peopleCollection.Add(new Buyer() { Id = 3 });
-        //        peopleCollection.Add(new Buyer() { Id = 3 });
-
-
-
-        //        var buyer = peopleCollection.Get(3);
-
-
-
-        //        foreach (var p in peopleCollection)
-        //        {
-        //            var id = p.Id;
-        //        }
-
-
-
-        //        var b = peopleCollection[2];
-        //        peopleCollection[2] = new Buyer() { Id = 4 };
-
-
-
-        //    }
 
     }
 }

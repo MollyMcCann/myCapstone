@@ -25,18 +25,21 @@ namespace myCapstone
         HomeCollection homeCollection;
         HomeSalesCollection homeSalesCollection;
         PeopleCollection peopleCollection;
+        RealEstateCompanyCollection realEstateCompaniesCollection;
         public MainWindow()
         {
             homeCollection = new HomeCollection();
             homeSalesCollection = new HomeSalesCollection();
             peopleCollection = new PeopleCollection();
+            realEstateCompaniesCollection = new RealEstateCompanyCollection();
             InitializeComponent();
-            using (HomeTrackerModel1 db = new HomeTrackerModel1())//move this to form load
+            using (HomeTrackerModel1 db = new HomeTrackerModel1())
             {
                 //retrieve data:
-               // homeCollection = new HomeCollection(db.Homes.ToList());
+               homeCollection = new HomeCollection(db.Homes.ToList());
                homeSalesCollection = new HomeSalesCollection(db.HomeSales.ToList());
-                peopleCollection = new PeopleCollection(db.People.ToList()); 
+                peopleCollection = new PeopleCollection(db.People.ToList());//fix this
+                realEstateCompaniesCollection = new RealEstateCompanyCollection(db.RealEstateCompanies.ToList());
             }
 
             foreach (Home home in homeCollection)
@@ -56,6 +59,7 @@ namespace myCapstone
             HomeDataGrid.DataContext = homeCollection;
             HomeDataGrid.DataContext = homeSalesCollection;
             HomeDataGrid.DataContext = peopleCollection;
+            HomeDataGrid.DataContext = realEstateCompaniesCollection;
         }
         private void exitButton_Click(object sender, RoutedEventArgs e)
         {

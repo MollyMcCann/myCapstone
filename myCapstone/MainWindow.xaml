@@ -8,12 +8,13 @@
         mc:Ignorable="d"
         Title="Home Tracker!" Height="450" Width="908">
 
-    <Grid>
+    <Grid Margin="0,0,2,0">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="111*"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Label Content="Search:" HorizontalAlignment="Left" Margin="10,33,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.488,0.52" Padding="0,5,5,5" Height="25" Width="90"/>
+        <TextBox x:Name="searchTextBox" Height="23" Margin="10,56,264,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
         <ComboBox x:Name="searchInMenu" Margin="0,55,92,0" VerticalAlignment="Top" Height="23" HorizontalAlignment="Right" Width="167">
             <ComboBoxItem Content="All" IsSelected="True"/>
             <ComboBoxItem Content="Homes"/>
@@ -21,11 +22,12 @@
             <ComboBoxItem Content="People"/>
             <ComboBoxItem Content="Real Estate Companies"/>
         </ComboBox>
-        <DataGrid x:Name="HomeDataGrid" ItemsSource="{Binding}" HorizontalAlignment="Left" Height="292" VerticalAlignment="Top" Width="772" Margin="10,98,0,0">
+        <DataGrid x:Name="HomeDataGrid" ItemsSource="{Binding}" HorizontalAlignment="Left" Width="772" Margin="10,98,0,39">
             <!--<DataGrid.Columns>
 
             </DataGrid.Columns>-->
         </DataGrid>
+        <Button x:Name="searchButton" Content="_Search" Margin="0,55,0,0" IsDefault="True" VerticalAlignment="Top" Height="24" HorizontalAlignment="Right" Width="87" Click="searchButton_Click"/>
         <Button x:Name="exitButton" Content="E_xit" Margin="0,0,10,10" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="77" Height="19" Click="exitButton_Click"/>
     </Grid>
 </Window>

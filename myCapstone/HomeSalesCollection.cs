@@ -80,11 +80,6 @@ namespace HomeTrackerTest
             return ((IEnumerable<HomeSale>)_homeSales).GetEnumerator();
         }
 
-        //IEnumerator<HomeSale> IEnumerable<HomeSale>.GetEnumerator()
-        //{
-        //    throw new NotImplementedException();
-        //}
-
-        
+      
     }
 }
