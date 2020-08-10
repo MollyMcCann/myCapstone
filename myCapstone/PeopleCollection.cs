@@ -5,29 +5,35 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using HomeTrackerDatamodelLibrary;
+
 namespace HomeTrackerTest
 {
-
-    class PeopleCollection1
+    class PeopleCollection
     {
-        public class PeopleCollection<T>
+       
+        public class PeopleCollection1<T>
         : IEnumerator<T>, IEnumerable<T>
         where T : Person, IID
         {
             private List<T> _peopleList;
             int position = -1;
-
-
-
-            public PeopleCollection()
+            public PeopleCollection1()
             {
                 _peopleList = new List<T>();
+            }
+            public PeopleCollection1(List<T> people)
+            {
+                _peopleList = people;
+                if (_peopleList.Count > 0)
+                {
+                    position = 0;
+                }
             }
             public void Sort()
             {
                 _peopleList.Sort();
             }
-
+         
             public int Count
             {
                 get { return _peopleList.Count; }
@@ -37,7 +43,7 @@ namespace HomeTrackerTest
             {
                 _peopleList.Clear();
             }
-        
+
 
             public T Current => _peopleList[position];
 
@@ -72,7 +78,7 @@ namespace HomeTrackerTest
 
             public IEnumerator<T> GetEnumerator()
             {
-                return (IEnumerator<T>)this;
+                return this;
             }
 
 
@@ -94,7 +100,7 @@ namespace HomeTrackerTest
 
             IEnumerator IEnumerable.GetEnumerator()
             {
-                return (IEnumerator)this;
+                return ((IEnumerable<Person>)_peopleList).GetEnumerator();
             }
 
 
@@ -184,5 +190,4 @@ namespace HomeTrackerTest
 
     }
 }
-
 

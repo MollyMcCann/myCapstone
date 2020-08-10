@@ -23,14 +23,20 @@ namespace myCapstone
     public partial class MainWindow : Window
     {
         HomeCollection homeCollection;
+        HomeSalesCollection homeSalesCollection;
+        PeopleCollection peopleCollection;
         public MainWindow()
         {
-              homeCollection = new HomeCollection();
+            homeCollection = new HomeCollection();
+            homeSalesCollection = new HomeSalesCollection();
+            peopleCollection = new PeopleCollection();
             InitializeComponent();
             using (HomeTrackerModel1 db = new HomeTrackerModel1())//move this to form load
             {
                 //retrieve data:
-                homeCollection = new HomeCollection(db.Homes.ToList());
+               // homeCollection = new HomeCollection(db.Homes.ToList());
+               homeSalesCollection = new HomeSalesCollection(db.HomeSales.ToList());
+                peopleCollection = new PeopleCollection(db.People.ToList()); 
             }
 
             foreach (Home home in homeCollection)
@@ -48,6 +54,8 @@ namespace myCapstone
             //    homes.Add(h);
             //}
             HomeDataGrid.DataContext = homeCollection;
+            HomeDataGrid.DataContext = homeSalesCollection;
+            HomeDataGrid.DataContext = peopleCollection;
         }
         private void exitButton_Click(object sender, RoutedEventArgs e)
         {

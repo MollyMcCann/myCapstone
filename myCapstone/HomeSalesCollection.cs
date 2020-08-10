@@ -9,22 +9,23 @@ using HomeTrackerDatamodelLibrary;
 namespace HomeTrackerTest
 {
     class HomeSalesCollection
-        : IEnumerator, IEnumerable
+        : IEnumerator<HomeSale>, IEnumerable<HomeSale>
     {
         private List<HomeSale> _homeSales;
         int position = -1;
         public HomeSalesCollection()
         {
             _homeSales = new List<HomeSale>();
-           // using (HomeTrackerModel1 db = new HomeTrackerModel1())
-           // {
-           //     //retrieve data:
-           //     HomeSale homeSales = (from hs in db.HomeSales
-           //                  select hs).FirstOrDefault();
-           //     Add(homeSales);
-           // }
-        }     
-
+          
+        }
+        public HomeSalesCollection(List<HomeSale> homeSales)
+        {
+            _homeSales = homeSales;
+            if (_homeSales.Count > 0)
+            {
+                position = 0;
+            }
+        }
         public HomeSale Current => _homeSales[position];
 
         object IEnumerator.Current => _homeSales[position];
@@ -58,7 +59,7 @@ namespace HomeTrackerTest
             //   throw new NotImplementedException();
         }
 
-        public IEnumerator GetEnumerator()
+        public IEnumerator<HomeSale> GetEnumerator()
         {
             return this;
         }
@@ -73,11 +74,17 @@ namespace HomeTrackerTest
             position = -1;
         }
 
+
         IEnumerator IEnumerable.GetEnumerator()
         {
-            return (IEnumerator<HomeSale>)this;
+            return ((IEnumerable<HomeSale>)_homeSales).GetEnumerator();
         }
 
-       
+        //IEnumerator<HomeSale> IEnumerable<HomeSale>.GetEnumerator()
+        //{
+        //    throw new NotImplementedException();
+        //}
+
+        
     }
 }
