@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using HomeTrackerDatamodelLibrary;
 
-namespace HomeTrackerTest
+namespace myCapstone
 {
     class HomeSalesCollection
         : IEnumerator<HomeSale>, IEnumerable<HomeSale>

@@ -6,22 +6,20 @@ using System.Text;
 using System.Threading.Tasks;
 using HomeTrackerDatamodelLibrary;
 
-namespace HomeTrackerTest
+namespace myCapstone
 {
-    class PeopleCollection
-    {
-       // private List<HomeTrackerDatamodelLibrary.Person> lists;
-        public class PeopleCollection1<T>
-        : IEnumerator<T>, IEnumerable<T>
-        where T : Person, IID
+
+    public class PeopleCollection<People>
+        : IEnumerator<People>, IEnumerable<People>
+        
         {
-            private List<T> _peopleList;
+            private List<People> _peopleList;
             int position = -1;
-            public PeopleCollection1()
+            public PeopleCollection()
             {
-                _peopleList = new List<T>();
+                _peopleList = new List<People>();
             }
-            public PeopleCollection1(List<T> people)
+            public PeopleCollection(List<People> people)
             {
                 _peopleList =people;
 
@@ -46,13 +44,13 @@ namespace HomeTrackerTest
             }
 
 
-            public T Current => _peopleList[position];
+            public People Current => _peopleList[position];
 
             object IEnumerator.Current => _peopleList[position];
 
 
 
-            public void Add(T person)
+            public void Add(People person)
             {
                 var p1 = _peopleList.SingleOrDefault(p => p.Id == person.Id);
                 if (p1 == null)
@@ -70,14 +68,14 @@ namespace HomeTrackerTest
 
 
 
-            public T Get(int id)//check in on this
+            public People Get(int id)//check in on this
             {
                 return _peopleList.SingleOrDefault(p => p.Id == id);
             }
 
 
 
-            public IEnumerator<T> GetEnumerator()
+            public IEnumerator<People> GetEnumerator()
             {
                 return this;
             }
@@ -96,26 +94,16 @@ namespace HomeTrackerTest
             {
                 position = -1;
             }
-
-
-
-            //IEnumerator IEnumerable.GetEnumerator()
-            //{
-            //    return ((IEnumerable<Person>)_peopleList).GetEnumerator();
-            //}
-
-
-
             public int Length => _peopleList.Count;
 
             //object IEnumerator.Current => throw new NotImplementedException();
 
-            public T this[int index]
+            public People this[int index]
             {
                 get => _peopleList[index];
                 set => _peopleList[index] = value;
             }
-            IEnumerator<T> IEnumerable<T>.GetEnumerator()
+            IEnumerator<People> IEnumerable<People>.GetEnumerator()
             {
                 return _peopleList.GetEnumerator();
             }
@@ -168,5 +156,5 @@ namespace HomeTrackerTest
         }
 
     }
-}
+
 
