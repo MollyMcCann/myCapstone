@@ -58,6 +58,7 @@
     <Compile Include="CreateandInitializeDB.cs" />
     <Compile Include="Home.cs" />
     <Compile Include="HomeSale.cs" />
+    <Compile Include="HomeSearchDisplay.cs" />
     <Compile Include="HomeTrackerInitializer.cs" />
     <Compile Include="HomeTrackerModel1.cs" />
     <Compile Include="Owner.cs" />

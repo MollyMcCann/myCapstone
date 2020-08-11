@@ -18,93 +18,107 @@ namespace myCapstone
             private PeopleCollection _peopleCollection = new PeopleCollection();
             private HomeCollection _homeCollection = new HomeCollection();
             private HomeSalesCollection _homesalesCollection = new HomeSalesCollection();
-            private RealEstateCompanyCollection _realEstateCompanies = new RealEstateCompanyCollection();
+            private RealEstateCompanyCollection _realEstateCompanyCollection = new RealEstateCompanyCollection();
 
             //Public properties
             public PeopleCollection PeopleCollection { get { return _peopleCollection; } }
-        public HomeCollection HomeCollection { get { return _homeCollection; } }
-        public HomeSalesCollection HomeSalesCollection { get { return _checkedOutCollection; } }
+            public HomeCollection HomeCollection { get { return _homeCollection; } }
+            public HomeSalesCollection HomeSalesCollection { get { return _homesalesCollection; } }
+            public RealEstateCompanyCollection RealEstateCompanyCollection { get { return _realEstateCompanyCollection; } }
 
-            //Constructor
-            public Collections()
+
+        //Constructor
+        public Collections()
             {
                 //Initialize the collections by loading them with the appropriate data from the database
                 LoadData();
             }
 
-            //METHOD: Initialize the People, Books, and CheckedOutLog collections
+            //METHOD: Initialize the People,real estate companies, home sales and home collections
             private void LoadData()
             {
                 try
                 {
                     //Clear all collections before (re)writing to them so there are no duplicates
-                    _bookCollection.Clear();
+                    _homeCollection.Clear();
                     _peopleCollection.Clear();
-                    _checkedOutCollection.Clear();
+                    _homesalesCollection.Clear();
+                    _realEstateCompanyCollection.Clear();
 
-                    //Query the database to retrieve all People
-                    var peopleObjects = from p in db.People select p;
+                //Query the database to retrieve all People
+                var peopleObjects = from p in db.People select p;
                     //Add each person to the PeopleCollection as their child type
                     foreach (var p in peopleObjects)
                     {
                         if (p is Agent)
-                            PeopleCollection[0] = p as agent;
+                            PeopleCollection[0] = p as Agent;
 
-                        if (p is Librarians)
-                            PeopleCollection[0] = p as Librarians;
+                        if (p is Buyer)
+                            PeopleCollection[0] = p as Buyer;
 
-                        if (p is Cardholders)
-                            PeopleCollection[0] = p as Cardholders;
+                        if (p is Owner)
+                            PeopleCollection[0] = p as Owner;
                     }
                     //Now that all people have been added, perform a sort
                     PeopleCollection.Sort();
 
-                    //Query the database to retrieve all Books
-                    var bookObjects = from b in db.Books select b;
-                    //Add each book to the BookCollection
-                    foreach (var b in bookObjects)
+                    //Query the database to retrieve all Homes
+                    var homeObjects = from h in db.Homes select h;
+                    //Add each book to the HomeCollection
+                    foreach (var h in homeObjects)
                     {
-                        _bookCollection[0] = b;
+                        _homeCollection[0] = h;
                     }
-                    //Now that all books have been added, perform a sort
-                    BookCollection.Sort();
+                //Now that all homes have been added, perform a sort
 
-                    //Query the database to retrieve all CheckedOutLogs
-                    var checkedOutObjects = from co in db.CheckOutLog select co;
-                    //Add each log to the CheckedOutCollection
-                    foreach (var co in checkedOutObjects)
+                //Query the database to retrieve all HomeSales
+                    var homeSalesObjects = from hs in db.HomeSales select hs;
+                    //Add each log to the HomeSalescollection
+                    foreach (var hs in homeSalesObjects)
                     {
-                        _checkedOutCollection[0] = co;
+                        _homesalesCollection[0] = hs;
                     }
-                    //Now that all the logs have been added, perform a sort
-                    CheckedOutCollection.Sort();
-                }
+                    //Now that all the Home sales have been added, perform a sort
+                    HomeSalesCollection.Sort();
+
+                    //Query the database to retrieve all real Estate Companies
+                    var realEstateObject = from re in db.RealEstateCompanies select re;
+                    //Add each company to the RealEstateCompanyCollection
+                    foreach (var re in realEstateObject)
+                    {
+                    _realEstateCompanyCollection[0] = re;
+                    }
+                    //Now that all companies have been added, perform a sort
+                    RealEstateCompanyCollection.Sort();
+            }
                 catch (Exception ex)
                 {
                     //Write any exceptions to the ErrorLog.txt file
                     var exHandler = new ExceptionHandler(ex);
+                    //should i take this out or leave it in?
+
                 }
             }
 
             //METHOD: Searches for a match in each book's Title, Author, Subject, and ISBN, and adds all matches to a BookSearchDisplay List
-            internal void BookSearchAll(string query, out List<BookSearchDisplay> resultsList)
+            internal void HomeSearchAll(string query, out List<HomeSearchDisplay> resultsList)
             {
                 //Ensure the given resultsList is clear of any items
-                resultsList = new List<BookSearchDisplay>();
+                resultsList = new List<HomeSearchDisplay>();
 
                 //Go through each book and search for a match between the given Query and the book's Title, Subject, or ISBN
-                foreach (Books b in BookCollection)
+                foreach (Home h in HomeCollection)
                 {
-                    if ((b.Title.ToUpper().Contains(query.ToUpper()) || b.Subject.ToUpper().Contains(query.ToUpper()) || b.ISBN.ToString().Contains(query))
+                    if ((h.HomeID().Contains(query.ToUpper()) || b.Subject.ToUpper().Contains(query.ToUpper()) || b.ISBN.ToString().Contains(query))
                         && b.NumberOfCopies > 0)
                     {
                         //If a match is found, get that book's author
-                        foreach (var a in PeopleCollection)
+                        foreach (var p in PeopleCollection)
                         {
-                            if (b.AuthorID == a.PersonID)
+                            if (p.OwnerID == p.PersonID)
                             {
                                 //Add the matching result to the list
-                                var result = new BookSearchDisplay(b, a);
+                                var result = new HomeSearchDisplay(h, p);
                                 resultsList.Add(result);
                             }
                         }

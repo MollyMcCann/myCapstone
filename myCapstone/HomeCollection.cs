@@ -27,6 +27,10 @@ namespace myCapstone
                 position = 0;
             }
         }
+        public void Clear()
+        {
+            _homes.Clear();
+        }
 
         public Home Current => _homes[position];
 

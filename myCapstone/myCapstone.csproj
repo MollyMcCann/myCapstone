@@ -66,6 +66,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Collections.cs" />
+    <Compile Include="ExceptionHandler.cs" />
     <Compile Include="PeopleCollection.cs" />
     <Compile Include="RealEstateCompanyCollection.cs" />
     <Page Include="MainWindow.xaml">
