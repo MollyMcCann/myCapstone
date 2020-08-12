@@ -8,7 +8,7 @@ using HomeTrackerDatamodelLibrary;
 
 namespace myCapstone
 {
-    class HomeCollection
+   public class HomeCollection
         : IEnumerator<Home>, IEnumerable<Home>
     {
         private List<Home> _homes;
@@ -66,6 +66,10 @@ namespace myCapstone
             position = -1;
         }
 
+        public void Sort()
+        {
+            _homes.Sort();
+        }
         IEnumerator IEnumerable.GetEnumerator()
         {
             return ((IEnumerable<Home>)_homes).GetEnumerator();

@@ -1,0 +1,42 @@
+﻿<Window x:Class="myCapstone.AddHome"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:myCapstone"
+        mc:Ignorable="d"
+        Title="AddHome" Height="450" Width="800">
+    <Grid>
+        <TextBlock HorizontalAlignment="Left" Height="15" Margin="63,73,0,0" TextWrapping="Wrap" Text="Enter Address" VerticalAlignment="Top" Width="77"/>
+        <TextBlock HorizontalAlignment="Left" Margin="59,39,0,0" TextWrapping="Wrap" Text="Enter Home Id" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="63,112,0,0" TextWrapping="Wrap" Text="Enter City" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="63,154,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.415,2.702"><Run Text="Enter Zip Code"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="63,141,0,0" TextWrapping="Wrap" Text="Enter State" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5">
+            <TextBlock.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0.12"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </TextBlock.RenderTransform>
+        </TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="63,175,0,0" TextWrapping="Wrap" Text="Is This a New Owner?" VerticalAlignment="Top"/>
+        <CheckBox Content="Yes" HorizontalAlignment="Left" Margin="198,179,0,0" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="63,211,0,0" TextWrapping="Wrap" Text="Add First name" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="63,230,0,0" TextWrapping="Wrap" Text="Add Last name" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="63,245,0,0" TextWrapping="Wrap" Text="Add phone Number" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="63,278,0,0" TextWrapping="Wrap" Text="Add email" VerticalAlignment="Top" RenderTransformOrigin="0.481,0.562"/>
+        <TextBlock HorizontalAlignment="Left" Margin="63,299,0,0" TextWrapping="Wrap" Text="Add Perferred Lender" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="176,39,0,0" TextWrapping="Wrap" x:Name="HomeId" VerticalAlignment="Top" Width="120"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="176,67,0,0" TextWrapping="Wrap" x:Name="Address" VerticalAlignment="Top" Width="120"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="176,105,0,0" TextWrapping="Wrap" x:Name ="City" VerticalAlignment="Top" Width="120"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="176,140,0,0" TextWrapping="Wrap" x:Name="State" VerticalAlignment="Top" Width="120"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="176,204,0,0" TextWrapping="Wrap" x:Name="firstName" VerticalAlignment="Top" Width="120"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="176,232,0,0" TextWrapping="Wrap" x:Name  ="LastName" VerticalAlignment="Top" Width="120"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="181,251,0,0" TextWrapping="Wrap" x:Name= "PhoneNumber" VerticalAlignment="Top" Width="120"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="176,277,0,0" TextWrapping="Wrap" x:Name="Email" VerticalAlignment="Top" Width="120"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="198,298,0,0" TextWrapping="Wrap" x:Name="PreferredLender" VerticalAlignment="Top" Width="120"/>
+        <Button Content="Add!" HorizontalAlignment="Left" Margin="476,73,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+    </Grid>
+</Window>

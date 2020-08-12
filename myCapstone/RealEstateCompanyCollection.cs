@@ -8,7 +8,7 @@ using HomeTrackerDatamodelLibrary;
 
 namespace myCapstone
 {
-    class RealEstateCompanyCollection
+   public class RealEstateCompanyCollection
             : IEnumerator<RealEstateCompany>, IEnumerable<RealEstateCompany>
     {
         private List<RealEstateCompany> _realEstateCompanies;

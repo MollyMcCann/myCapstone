@@ -65,10 +65,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddHome.xaml.cs">
+      <DependentUpon>AddHome.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Collections.cs" />
     <Compile Include="ExceptionHandler.cs" />
     <Compile Include="PeopleCollection.cs" />
     <Compile Include="RealEstateCompanyCollection.cs" />
+    <Page Include="AddHome.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

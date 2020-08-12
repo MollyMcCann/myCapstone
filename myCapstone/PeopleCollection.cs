@@ -9,7 +9,7 @@ using HomeTrackerDatamodelLibrary;
 namespace myCapstone
 {
 
-    public class PeopleCollection<Person>
+    public class PeopleCollection
         : IEnumerator<Person>, IEnumerable<Person>
 
         
@@ -53,10 +53,10 @@ namespace myCapstone
 
             public void Add(Person person)
             {
-                var p1 = _peopleList.SingleOrDefault(p => p.Id == person.Id);
+                var p1 = _peopleList.SingleOrDefault(p => p.PersonID == person.PersonID);
                 if (p1 == null)
                 {
-                    _peopleList.Add(person);
+                    _peopleList.Add(person);//
                 }
             }
 
@@ -71,7 +71,7 @@ namespace myCapstone
 
             public Person Get(int id)//check in on this
             {
-                return _peopleList.SingleOrDefault(p => p.Id == id);
+                return _peopleList.SingleOrDefault(p => p.PersonID== id);
             }
 
 
@@ -143,18 +143,6 @@ namespace myCapstone
         }
 
 
-
-        public interface IID
-        {
-            int Id { get; set; }
-        }
-
-
-
-        public class Person : IID
-        {
-            public int Id { get; set; }
-        }
 
     }
 
