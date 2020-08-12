@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         Title="Home Tracker!" Height="450" Width="908">
 
-    <Grid Margin="0,0,2,0">
+    <Grid Margin="0,0,-8,0">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="111*"/>
             <ColumnDefinition/>
@@ -29,6 +29,7 @@
         </DataGrid>
         <Button x:Name="searchButton" Content="_Search" Margin="0,55,0,0" IsDefault="True" VerticalAlignment="Top" Height="24" HorizontalAlignment="Right" Width="87" />
         <Button x:Name="exitButton" Content="E_xit" Margin="0,0,10,10" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="77" Height="19" Click="exitButton_Click"/>
-        <Button Content="Add a Home" HorizontalAlignment="Left" Margin="803,120,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+        <Button Content="Add a Home" HorizontalAlignment="Left" Margin="787,120,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+        <Button Content="Update a Home" HorizontalAlignment="Left" Margin="787,157,0,0" VerticalAlignment="Top" Width="95" Height="24" Click="Button_Click_1"/>
     </Grid>
 </Window>

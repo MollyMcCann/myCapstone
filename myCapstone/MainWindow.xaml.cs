@@ -27,6 +27,7 @@ namespace myCapstone
         PeopleCollection peopleCollection;
         RealEstateCompanyCollection realEstateCompaniesCollection;
         AddHome addHomeWindow;
+        UpdateHomes updateHomesWindow;
         public MainWindow()
         {
             homeCollection = new HomeCollection();
@@ -42,6 +43,8 @@ namespace myCapstone
                 peopleCollection = new PeopleCollection(db.People.ToList());//fix this
                 realEstateCompaniesCollection = new RealEstateCompanyCollection(db.RealEstateCompanies.ToList());
                 addHomeWindow = new AddHome(peopleCollection,homeCollection);
+                updateHomesWindow = new UpdateHomes(peopleCollection, homeCollection);
+
             }
 
             foreach (Home home in homeCollection)
@@ -71,6 +74,11 @@ namespace myCapstone
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             addHomeWindow.Show();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            updateHomesWindow.Show();
         }
     }
 }
