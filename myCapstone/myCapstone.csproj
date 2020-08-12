@@ -72,6 +72,9 @@
     <Compile Include="ExceptionHandler.cs" />
     <Compile Include="PeopleCollection.cs" />
     <Compile Include="RealEstateCompanyCollection.cs" />
+    <Compile Include="removeAHome.xaml.cs">
+      <DependentUpon>removeAHome.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UpdateHomes.xaml.cs">
       <DependentUpon>UpdateHomes.xaml</DependentUpon>
     </Compile>
@@ -93,6 +96,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="removeAHome.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UpdateHomes.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

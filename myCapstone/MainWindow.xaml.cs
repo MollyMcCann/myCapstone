@@ -28,6 +28,8 @@ namespace myCapstone
         RealEstateCompanyCollection realEstateCompaniesCollection;
         AddHome addHomeWindow;
         UpdateHomes updateHomesWindow;
+        removeAHome removeAHomeWindow;
+        
         public MainWindow()
         {
             homeCollection = new HomeCollection();
@@ -44,6 +46,7 @@ namespace myCapstone
                 realEstateCompaniesCollection = new RealEstateCompanyCollection(db.RealEstateCompanies.ToList());
                 addHomeWindow = new AddHome(peopleCollection,homeCollection);
                 updateHomesWindow = new UpdateHomes(peopleCollection, homeCollection);
+                removeAHomeWindow = new removeAHome(peopleCollection, homeCollection);
 
             }
 
