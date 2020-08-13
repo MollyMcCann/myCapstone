@@ -31,5 +31,6 @@
         <Button x:Name="exitButton" Content="E_xit" Margin="0,0,10,10" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="77" Height="19" Click="exitButton_Click"/>
         <Button Content="Add a Home" HorizontalAlignment="Left" Margin="787,120,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
         <Button Content="Update a Home" HorizontalAlignment="Left" Margin="787,157,0,0" VerticalAlignment="Top" Width="95" Height="24" Click="Button_Click_1"/>
+        <Button Content="Remove a Home" HorizontalAlignment="Left" Margin="787,199,0,0" VerticalAlignment="Top" Width="95" Click="Button_Click_2"/>
     </Grid>
 </Window>
