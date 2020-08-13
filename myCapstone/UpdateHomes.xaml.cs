@@ -28,5 +28,17 @@ namespace myCapstone
             peopleUd = people;
             HomeUd = homes;
         }
+        private void LoadHomesList()// see if I can get this to load to listbox, are more values needed?
+
+        {
+            using (var db = new HomeTrackerModel1())
+            {
+                var homeList = db.Homes.OrderBy(h => h.HomeID).Select(h => new { HomeID = h.HomeID,  }).ToList();
+                this.HomeListBox.DisplayMemberPath = "HomeId";
+                this.HomeListBox.SelectedValuePath = "Address";
+                this.HomeListBox.ItemsSource = homeList;
+            }
+        }
+
     }
 }

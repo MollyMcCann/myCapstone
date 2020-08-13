@@ -5,10 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:myCapstone"
         mc:Ignorable="d"
-        Title="UpdateHomes" Height="450" Width="800">
-    <Grid>
+        Title="UpdateHomes" Height="401" Width="665">
+    <Grid Margin="0,0,2,7">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="593*"/>
+            <ColumnDefinition Width="197*"/>
+        </Grid.ColumnDefinitions>
         <TextBlock HorizontalAlignment="Left" Margin="56,39,0,0" TextWrapping="Wrap" Text="Select a Home to Update" VerticalAlignment="Top" RenderTransformOrigin="-3.061,-1.125"/>
-        <ListBox HorizontalAlignment="Left" Height="100" Margin="56,77,0,0" VerticalAlignment="Top" Width="100"/>
+        <ListBox x:Name="HomeListBox" HorizontalAlignment="Left" Height="100" Margin="56,77,0,0" VerticalAlignment="Top" Width="100"/>
+        <Button Content="Update!" HorizontalAlignment="Left" Margin="10,316,0,0" VerticalAlignment="Top" Width="90" Height="25" Grid.Column="1"/>
+        <TextBlock HorizontalAlignment="Left" Margin="189,77,0,0" TextWrapping="Wrap" Text="Need to Add a new Agent?" VerticalAlignment="Top"/>
+        <CheckBox Content="" HorizontalAlignment="Left" Margin="344,77,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.6,0.933" Height="16" Width="25"/>
+        <TextBlock HorizontalAlignment="Left" Margin="189,123,0,0" TextWrapping="Wrap" Text="Need to Add a new Buyer?" VerticalAlignment="Top"/>
+        <CheckBox Content="" HorizontalAlignment="Left" Margin="344,127,0,0" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="406,22,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>
