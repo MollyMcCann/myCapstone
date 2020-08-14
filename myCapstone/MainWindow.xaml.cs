@@ -42,7 +42,7 @@ namespace myCapstone
                 //retrieve data:
                homeCollection = new HomeCollection(db.Homes.ToList());
                homeSalesCollection = new HomeSalesCollection(db.HomeSales.ToList());
-                peopleCollection = new PeopleCollection(db.People.ToList());//fix thi
+                peopleCollection = new PeopleCollection(db.People.ToList());
                 realEstateCompaniesCollection = new RealEstateCompanyCollection(db.RealEstateCompanies.ToList());
                 addHomeWindow = new AddHome(peopleCollection,homeCollection);
                 updateHomesWindow = new UpdateHomes(peopleCollection, homeCollection);

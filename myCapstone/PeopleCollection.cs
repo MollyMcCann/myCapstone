@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using HomeTrackerDatamodelLibrary;
+using System.Data.Entity;
 
 namespace myCapstone
 {
@@ -63,22 +64,26 @@ namespace myCapstone
 
                     try
                     {
-                        db.People.Add(person);
+                        //db.People.Add(person);
+                        db.Entry(person).State = EntityState.Added;
 
                         if (person.Owner != null)
                         {
                             person.Owner.OwnerID = person.PersonID;
-                            db.Owners.Add(person.Owner);
+                            db.Entry(person.Owner).State = EntityState.Added;
+                            //db.Owners.Add(person.Owner);
                         }
                         if (person.Agent != null)
                         {
                             person.Agent.AgentID = person.PersonID;
-                            db.Agents.Add(person.Agent);
+                            db.Entry(person.Agent).State = EntityState.Added;
+                            //db.Agents.Add(person.Agent);
                         }
                         if (person.Buyer != null)
                         {
                             person.Buyer.BuyerID = person.PersonID;
-                            db.Buyers.Add(person.Buyer);
+                            db.Entry(person.Buyer).State = EntityState.Added;
+                            //db.Buyers.Add(person.Buyer);
                         }
 
                         db.SaveChanges();
