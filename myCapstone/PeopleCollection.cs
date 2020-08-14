@@ -86,7 +86,7 @@ namespace myCapstone
                             //db.Buyers.Add(person.Buyer);
                         }
 
-                        db.SaveChanges();
+                        db.SaveChanges(); //tried to add home with out owner and had this exception thrown. Owner can't be an option?
                     }
                     catch (Exception ex )
                     {
