@@ -13,12 +13,23 @@
         </Grid.ColumnDefinitions>
         <TextBlock HorizontalAlignment="Left" Margin="56,39,0,0" TextWrapping="Wrap" Text="Select a Home to Update" VerticalAlignment="Top" RenderTransformOrigin="-3.061,-1.125"/>
         <ListBox x:Name="HomeListBox" HorizontalAlignment="Left" Height="100" Margin="56,77,0,0" VerticalAlignment="Top" Width="100"/>
-        <Button Content="Update!" HorizontalAlignment="Left" Margin="10,316,0,0" VerticalAlignment="Top" Width="90" Height="25" Grid.Column="1"/>
+        <Button Content="Update!" HorizontalAlignment="Left" Margin="10,316,0,0" VerticalAlignment="Top" Width="90" Height="25" Grid.Column="1" Click="Button_Click"/>
         <TextBlock HorizontalAlignment="Left" Margin="189,77,0,0" TextWrapping="Wrap" Text="Need to Add a new Agent?" VerticalAlignment="Top"/>
         <CheckBox Content="" HorizontalAlignment="Left" Margin="344,77,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.6,0.933" Height="16" Width="25"/>
         <TextBlock HorizontalAlignment="Left" Margin="189,123,0,0" TextWrapping="Wrap" Text="Need to Add a new Buyer?" VerticalAlignment="Top"/>
         <CheckBox Content="" HorizontalAlignment="Left" Margin="344,127,0,0" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="406,22,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="406,22,0,0" TextWrapping="Wrap" Text="First Name" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="406,55,0,0" TextWrapping="Wrap" Text="Last Name" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="406,93,0,0" TextWrapping="Wrap" Text="Phone Number" VerticalAlignment="Top" Height="18" Width="86"/>
+        <TextBlock HorizontalAlignment="Left" Margin="411,123,0,0" TextWrapping="Wrap" Text="Email" VerticalAlignment="Top" Height="20" Width="71"/>
+        <TextBlock HorizontalAlignment="Left" Margin="411,164,0,0" TextWrapping="Wrap" Text="Company" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="411,205,0,0" TextWrapping="Wrap" Text="Comission Percentage" VerticalAlignment="Top"/>
+        <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="33,15,0,0" TextWrapping="Wrap" x:Name="firstName" VerticalAlignment="Top" Width="120"/>
+        <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="33,55,0,0" TextWrapping="Wrap" x:Name="lastName" VerticalAlignment="Top" Width="120"/>
+        <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="33,93,0,0" TextWrapping="Wrap" x:Name="phoneNumber" VerticalAlignment="Top" Width="120"/>
+        <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="33,127,0,0" TextWrapping="Wrap" x:Name="email" VerticalAlignment="Top" Width="120"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="33,205,0,0" TextWrapping="Wrap" x:Name="comissionPercentage" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
+        <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="22" Margin="33,164,0,0" TextWrapping="Wrap" x:Name="Company" VerticalAlignment="Top" Width="120"/>
 
     </Grid>
 </Window>

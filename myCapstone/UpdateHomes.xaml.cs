@@ -22,23 +22,61 @@ namespace myCapstone
     {
         PeopleCollection peopleUd;
         HomeCollection HomeUd;
+        HomeCollection homeCollection;
+        HomeSalesCollection homesalesCollection;
+
         public UpdateHomes(PeopleCollection people, HomeCollection homes)
         {
             InitializeComponent();
             peopleUd = people;
             HomeUd = homes;
+            Loaded += UpdateHomes_Loaded ;
         }
-        private void LoadHomesList()// see if I can get this to load to listbox, are more values needed?
+
+        private void UpdateHomes_Loaded(object sender, RoutedEventArgs e)
+        {
+            LoadHomesList();
+        }
+
+        private void LoadHomesList()
 
         {
             using (var db = new HomeTrackerModel1())
             {
-                var homeList = db.Homes.OrderBy(h => h.HomeID).Select(h => new { HomeID = h.HomeID,  }).ToList();
-                this.HomeListBox.DisplayMemberPath = "HomeId";
-                this.HomeListBox.SelectedValuePath = "Address";
-                this.HomeListBox.ItemsSource = homeList;
+                //var homeList = db.Homes.OrderBy(h => h.HomeID).Select(h => new Home(){ HomeID = h.HomeID, Address = h.Address }).ToList();
+                //this.HomeListBox.DisplayMemberPath = "Address";
+                //this.HomeListBox.SelectedValuePath = "HomeID";
+                //this.HomeListBox.ItemsSource = homeList;
+
+                homeCollection = new HomeCollection(db.Homes.ToList());
+                this.HomeListBox.DisplayMemberPath = "Address";
+                this.HomeListBox.SelectedValuePath = "HomeID";
+                this.HomeListBox.ItemsSource = homeCollection;
+
+
             }
         }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Person personObject = new Person();
+            HomeTrackerDatamodelLibrary.Agent agentObject = new HomeTrackerDatamodelLibrary.Agent();
+            personObject.FirstName = firstName.Text;
+            personObject.LastName = lastName.Text;
+            personObject.Phone = phoneNumber.Text;
+            personObject.Email = email.Text;
+            decimal commPerc;
+
+            if( !decimal.TryParse(comissionPercentage.Text, out commPerc))
+            {
+                // TODO: Notify user of failure
+                return;
+            }
+
+            agentObject.CommissionPercent = commPerc;
+
+            personObject.Agent = agentObject;
+            peopleUd.Add(personObject);
+        }
     }
 }

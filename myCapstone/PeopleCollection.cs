@@ -60,25 +60,33 @@ namespace myCapstone
                 _peopleList.Add(person);
                 using (HomeTrackerModel1 db = new HomeTrackerModel1())
                 {
-                    db.People.Add(person);
 
-                    if (person.Owner != null)
+                    try
                     {
-                        person.Owner.OwnerID = person.PersonID;
-                        db.Owners.Add(person.Owner);
-                    }
-                    if (person.Agent != null)
-                    {
-                        person.Agent.AgentID = person.PersonID;
-                        db.Agents.Add(person.Agent);
-                    }
-                    if (person.Buyer != null)
-                    {
-                        person.Buyer.BuyerID = person.PersonID;
-                        db.Buyers.Add(person.Buyer);
-                    }
+                        db.People.Add(person);
 
-                    db.SaveChanges();
+                        if (person.Owner != null)
+                        {
+                            person.Owner.OwnerID = person.PersonID;
+                            db.Owners.Add(person.Owner);
+                        }
+                        if (person.Agent != null)
+                        {
+                            person.Agent.AgentID = person.PersonID;
+                            db.Agents.Add(person.Agent);
+                        }
+                        if (person.Buyer != null)
+                        {
+                            person.Buyer.BuyerID = person.PersonID;
+                            db.Buyers.Add(person.Buyer);
+                        }
+
+                        db.SaveChanges();
+                    }
+                    catch (Exception ex )
+                    {
+                        int i = 0;
+                    }//todo
                 }
             }
         }
