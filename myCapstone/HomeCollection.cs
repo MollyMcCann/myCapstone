@@ -38,16 +38,6 @@ namespace myCapstone
 
         object IEnumerator.Current => _homes[position];
 
-        //public void Add(Home home)
-        //{
-            
-        //    var re = _homes.SingleOrDefault(h => h.HomeID == home.HomeID);
-        //    if (re == null)
-        //    {
-        //        _homes.Add(home);
-        //    }
-        //}
-
         public void Add(Home home)
         {
             var h1 = _homes.SingleOrDefault(h => h.HomeID == home.HomeID);
@@ -60,17 +50,11 @@ namespace myCapstone
 
                     try
                     {
-                        //db.People.Add(home);
-                        db.Entry(home).State = EntityState.Added;
-
-                        //if (home.Owner != null)
-                        //{
-                        //    home = home.HomeID;
-                        //    db.Entry(home).State = EntityState.Added;
-                        //    //db.Owners.Add(home.Owner);
-                        //}
+                       
+                        db.Owners.Add(home.Owner);
+                        db.SaveChanges();
                         
-
+                        db.Homes.Add(home);
                         db.SaveChanges(); //tried to add home with out owner and had this exception thrown. Owner can't be an option?
                     }
                     catch (Exception ex)
