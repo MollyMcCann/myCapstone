@@ -21,8 +21,7 @@
                 </TransformGroup>
             </TextBlock.RenderTransform>
         </TextBlock>
-        <TextBlock HorizontalAlignment="Left" Margin="63,175,0,0" TextWrapping="Wrap" Text="Is This a New Owner?" VerticalAlignment="Top"/>
-        <CheckBox Content="Yes" HorizontalAlignment="Left" Margin="198,179,0,0" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="63,175,0,0" TextWrapping="Wrap" Text="Add the Owner Information" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Margin="63,204,0,0" TextWrapping="Wrap" Text="Add First name" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Margin="64,241,0,0" TextWrapping="Wrap" Text="Add Last name" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Margin="59,279,0,0" TextWrapping="Wrap" Text="Add phone Number" VerticalAlignment="Top"/>

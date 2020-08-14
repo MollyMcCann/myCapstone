@@ -5,6 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using HomeTrackerDatamodelLibrary;
+using System.Data.Entity;
+using System.Threading;
 
 namespace myCapstone
 {
@@ -36,16 +38,60 @@ namespace myCapstone
 
         object IEnumerator.Current => _homes[position];
 
+        //public void Add(Home home)
+        //{
+            
+        //    var re = _homes.SingleOrDefault(h => h.HomeID == home.HomeID);
+        //    if (re == null)
+        //    {
+        //        _homes.Add(home);
+        //    }
+        //}
+
         public void Add(Home home)
         {
-            
-            var re = _homes.SingleOrDefault(h => h.HomeID == home.HomeID);
-            if (re == null)
+            var h1 = _homes.SingleOrDefault(h => h.HomeID == home.HomeID);
+            if (h1 == null)
             {
+                home.HomeID = getLastId() + 1;
                 _homes.Add(home);
+                using (HomeTrackerModel1 db = new HomeTrackerModel1())
+                {
+
+                    try
+                    {
+                        //db.People.Add(home);
+                        db.Entry(home).State = EntityState.Added;
+
+                        //if (home.Owner != null)
+                        //{
+                        //    home = home.HomeID;
+                        //    db.Entry(home).State = EntityState.Added;
+                        //    //db.Owners.Add(home.Owner);
+                        //}
+                        
+
+                        db.SaveChanges(); //tried to add home with out owner and had this exception thrown. Owner can't be an option?
+                    }
+                    catch (Exception ex)
+                    {
+                        int i = 0;
+                    }
+                }
             }
         }
-      
+
+        private int getLastId()
+        {
+            int ret = -1;
+            using (HomeTrackerModel1 db = new HomeTrackerModel1())
+            {
+                ret = db.Homes.Max(p => p.HomeID);
+            }
+
+            return ret;
+        }
+
         public void Dispose()
         {
          //   throw new NotImplementedException();
