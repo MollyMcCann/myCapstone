@@ -18,9 +18,9 @@
         <ListBox x:Name="HomeListBox" HorizontalAlignment="Left" Height="151" Margin="24,77,0,0" VerticalAlignment="Top" Width="139"/>
         <Button Content="Update!" HorizontalAlignment="Left" Margin="10,316,0,0" VerticalAlignment="Top" Width="90" Height="25" Grid.Column="1" Click="Button_Click"/>
         <TextBlock HorizontalAlignment="Left" Margin="189,77,0,0" TextWrapping="Wrap" Text="Need to Add a new Agent?" VerticalAlignment="Top"/>
-        <CheckBox Content="" x:Name="CheckAgent" HorizontalAlignment="Left" Margin="344,77,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.6,0.933" Height="16" Width="25"/>
+        <RadioButton Content="" x:Name="CheckAgent" HorizontalAlignment="Left" Margin="344,77,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.6,0.933" Height="16" Width="25"/>
         <TextBlock HorizontalAlignment="Left" Margin="189,123,0,0" TextWrapping="Wrap" Text="Need to Add a new Buyer?" VerticalAlignment="Top"/>
-        <CheckBox Content="" x:Name="CheckBuyer" HorizontalAlignment="Left" Margin="344,127,0,0" VerticalAlignment="Top"/>
+        <RadioButton Content="" x:Name="CheckBuyer" HorizontalAlignment="Left" Margin="344,127,0,0" VerticalAlignment="Top"/>
         <!--Agent attributes-->
         <TextBlock HorizontalAlignment="Left" Margin="406,22,0,0" TextWrapping="Wrap" Text="First Name" Visibility="{Binding Path = IsChecked, ElementName=CheckAgent, Converter={StaticResource VisibleIfTrueConverter}}" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Margin="406,55,0,0" TextWrapping="Wrap" Text="Last Name" Visibility ="{Binding Path = IsChecked, ElementName=CheckAgent, Converter={StaticResource VisibleIfTrueConverter}}" VerticalAlignment="Top"/>

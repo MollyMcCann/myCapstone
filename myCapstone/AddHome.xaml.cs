@@ -44,16 +44,17 @@ namespace myCapstone
             peopleData.Add(personObject);
 
             Home homeObject = new Home();
+            homeObject.Owner = ownerObject;
             //HomeTrackerDatamodelLibrary.= new HomeTrackerDatamodelLibrary.Home();
             //homeObject.HomeID = HomeId.Text;
             int HID;
 
-            if (!int.TryParse(HomeId.Text, out HID))
-            {
-                // TODO: Notify user of failure
-                return;
-            }
-            homeObject.HomeID = HID;
+            //if (!int.TryParse(HomeId.Text, out HID))
+            //{
+            //    // TODO: Notify user of failure
+            //    return;
+            //}
+            //homeObject.HomeID = HID;
             homeObject.Address = Address.Text;
             homeObject.City = City.Text;
             homeObject.State = State.Text;

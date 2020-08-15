@@ -37,8 +37,12 @@ namespace myCapstone
             if (re == null)
             {
                 _homeSales.Add(homeSales);
+
             }
         }
+
+      
+
         public int Count
         {
             get { return _homeSales.Count; }

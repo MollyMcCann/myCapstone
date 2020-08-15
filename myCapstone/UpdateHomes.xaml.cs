@@ -59,24 +59,61 @@ namespace myCapstone
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Person personObject = new Person();
-            HomeTrackerDatamodelLibrary.Agent agentObject = new HomeTrackerDatamodelLibrary.Agent();
-            personObject.FirstName = firstName.Text;
-            personObject.LastName = lastName.Text;
-            personObject.Phone = phoneNumber.Text;
-            personObject.Email = email.Text;
-            decimal commPerc;
-
-            if( !decimal.TryParse(comissionPercentage.Text, out commPerc))
+            if (CheckAgent.IsChecked.HasValue && (bool)CheckAgent.IsChecked)
             {
-                // TODO: Notify user of failure
-                return;
+                Person personObject = new Person();
+                HomeTrackerDatamodelLibrary.Agent agentObject = new HomeTrackerDatamodelLibrary.Agent();
+                personObject.FirstName = firstName.Text;
+                personObject.LastName = lastName.Text;
+                personObject.Phone = phoneNumber.Text;
+                personObject.Email = email.Text;
+                decimal commPerc;
+
+                if (!decimal.TryParse(comissionPercentage.Text, out commPerc))
+                {
+                    // TODO: Notify user of failure
+                    return;
+                }
+
+                agentObject.CommissionPercent = commPerc;
+
+                personObject.Agent = agentObject;
+                peopleUd.Add(personObject);
+
+                HomeSale homeSalesObject = new HomeSale();
+                if(HomeListBox.SelectedIndex == -1)
+                {
+                    return;
+                    //todo tell user we cannot add the home
+                }
+                homeSalesObject.HomeID = (int)HomeListBox.SelectedValue;
+                homeSalesObject.AgentID = personObject.Agent.AgentID;
+                homeSalesObject.MarketDate = DateTime.Now;
+                //homeSalesObject.CompanyID = personObject.Agent.CompanyID; 
+                //todo: add agent company to UI, listbox
+                homeSalesObject.CompanyID = 12;//fix this
+
             }
+            else if(CheckBuyer.IsChecked.HasValue && (bool)CheckBuyer.IsChecked)
+            {
+                Person personObject = new Person();
+                HomeTrackerDatamodelLibrary.Buyer buyerObject = new HomeTrackerDatamodelLibrary.Buyer();
+                personObject.FirstName = firstNameB.Text;
+                personObject.LastName = lastNameB.Text;
+                personObject.Phone = phoneNumberB.Text;
+                personObject.Email = emailB.Text;
+                int credRate;
+                if(! int.TryParse(creditRatingB.Text, out credRate))
+                {
+                    return;
+                }
+                buyerObject.CreditRating = credRate;
 
-            agentObject.CommissionPercent = commPerc;
+                personObject.Buyer = buyerObject;
+                peopleUd.Add(personObject);
 
-            personObject.Agent = agentObject;
-            peopleUd.Add(personObject);
+            }
+            
         }
     }
 }

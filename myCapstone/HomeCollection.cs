@@ -51,8 +51,9 @@ namespace myCapstone
                     try
                     {
                        
-                        db.Owners.Add(home.Owner);
-                        db.SaveChanges();
+                        
+                        home.OwnerID = home.Owner.OwnerID;
+                       
                         
                         db.Homes.Add(home);
                         db.SaveChanges(); //tried to add home with out owner and had this exception thrown. Owner can't be an option?
