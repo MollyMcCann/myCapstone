@@ -57,7 +57,7 @@ namespace myCapstone
         {
               RemoveListBox.Items.RemoveAt
 
-            (RemoveListBox.Items.IndexOf(RemoveListBox.DataContext.SelectedItem));
+            (RemoveListBox.Items.IndexOf(RemoveListBox.SelectedItem));
 
             RemoveListBox.Items.Refresh();
 

@@ -126,7 +126,7 @@ namespace myCapstone
                 }
 
                
-                homeSalesObject.SaleAmount = SAmount;//add UI for listing price add box for this
+                homeSalesObject.SaleAmount = SAmount;
 
                 homeSalesCollection.Add(homeSalesObject);
             }
@@ -148,8 +148,31 @@ namespace myCapstone
                 personObject.Buyer = buyerObject;
                 peopleUd.Add(personObject);
 
+                HomeSale homeSalesObject = new HomeSale();
+                if (HomeListBox.SelectedIndex == -1)
+                {
+                    return;
+                    //todo tell user we cannot add the home
+                }
+                
+                homeSalesObject.HomeID = (int)HomeListBox.SelectedValue;
+                homeSalesObject.SoldDate = DateTime.Now;
+                decimal SAmount;
+
+                if (!decimal.TryParse(SaleAmount.Text, out SAmount))
+                {
+                    // TODO: Notify user of failure
+                    return;
+                }
+                homeSalesObject.SaleAmount = SAmount;
+                homeSalesObject.BuyerID = personObject.Buyer.BuyerID;
+                homeSalesObject.CompanyID = CompanyListBox.SelectedIndex;//fix this
+                homeSalesCollection.Add(homeSalesObject);
+
+
+
             }
-            
+
         }
     }
 }

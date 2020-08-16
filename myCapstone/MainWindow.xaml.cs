@@ -65,9 +65,9 @@ namespace myCapstone
             //    homes.Add(h);
             //}
             HomeDataGrid.DataContext = homeCollection;
-            HomeDataGrid.DataContext = homeSalesCollection;
-            HomeDataGrid.DataContext = peopleCollection;
-            HomeDataGrid.DataContext = realEstateCompaniesCollection;
+            //HomeDataGrid.DataContext = homeSalesCollection;
+            //HomeDataGrid.DataContext = peopleCollection;
+            //HomeDataGrid.DataContext = realEstateCompaniesCollection;
         }
         private void exitButton_Click(object sender, RoutedEventArgs e)
         {
