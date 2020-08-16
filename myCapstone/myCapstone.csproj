@@ -70,6 +70,8 @@
     </Compile>
     <Compile Include="Collections.cs" />
     <Compile Include="ExceptionHandler.cs" />
+    <Compile Include="HomeCollection.cs" />
+    <Compile Include="MainWindow.xaml.cs" />
     <Compile Include="PeopleCollection.cs" />
     <Compile Include="RealEstateCompanyCollection.cs" />
     <Compile Include="removeAHome.xaml.cs">
@@ -90,12 +92,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="HomeCollection.cs" />
     <Compile Include="HomeSalesCollection.cs" />
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
     <Page Include="removeAHome.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

@@ -54,10 +54,11 @@ namespace myCapstone
 
         public void Add(Person person)
         {
+            person.PersonID = getLastId() + 1;
+
             var p1 = _peopleList.SingleOrDefault(p => p.PersonID == person.PersonID);
             if (p1 == null)
             {
-                person.PersonID = getLastId() + 1;
                 _peopleList.Add(person);
                 using (HomeTrackerModel1 db = new HomeTrackerModel1())
                 {
@@ -86,7 +87,7 @@ namespace myCapstone
                             //db.Buyers.Add(person.Buyer);
                         }
 
-                        db.SaveChanges(); //tried to add home with out owner and had this exception thrown. Owner can't be an option?
+                        db.SaveChanges(); 
                     }
                     catch (Exception ex )
                     {

@@ -30,14 +30,27 @@ namespace myCapstone
 
         object IEnumerator.Current => _homeSales[position];
 
-        public void Add(HomeSale homeSales)
+        public void Add(HomeSale homeSale)
         {
+            homeSale.SaleID = getLastId() + 1;
 
-            var re = _homeSales.SingleOrDefault(hs => hs.HomeID == homeSales.HomeID);
-            if (re == null)
+            var homeS = _homeSales.SingleOrDefault(hs => hs.SaleID == homeSale.SaleID);
+            if (homeS == null)
             {
-                _homeSales.Add(homeSales);
-
+                _homeSales.Add(homeSale);
+                using (HomeTrackerModel1 db = new HomeTrackerModel1())
+                {
+                    try
+                    {
+                        db.HomeSales.Add(homeSale);
+                        db.SaveChanges();
+                    }
+                    catch (Exception ex)
+                    {
+                        //Todo: notify user
+                        int i = 0;
+                    }
+                }
             }
         }
 
@@ -84,6 +97,17 @@ namespace myCapstone
             return ((IEnumerable<HomeSale>)_homeSales).GetEnumerator();
         }
 
-      
+        private int getLastId()
+        {
+            int ret = -1;
+            using (HomeTrackerModel1 db = new HomeTrackerModel1())
+            {
+                ret = db.HomeSales.Max(p => p.SaleID);
+            }
+
+            return ret;
+        }
+
+
     }
 }

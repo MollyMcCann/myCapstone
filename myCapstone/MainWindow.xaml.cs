@@ -45,7 +45,7 @@ namespace myCapstone
                 peopleCollection = new PeopleCollection(db.People.ToList());
                 realEstateCompaniesCollection = new RealEstateCompanyCollection(db.RealEstateCompanies.ToList());
                 addHomeWindow = new AddHome(peopleCollection,homeCollection);
-                updateHomesWindow = new UpdateHomes(peopleCollection, homeCollection);
+                updateHomesWindow = new UpdateHomes(peopleCollection, homeCollection, homeSalesCollection, realEstateCompaniesCollection);
                 removeAHomeWindow = new removeAHome(peopleCollection, homeCollection);
 
             }

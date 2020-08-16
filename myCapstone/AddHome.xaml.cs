@@ -47,7 +47,7 @@ namespace myCapstone
             homeObject.Owner = ownerObject;
             //HomeTrackerDatamodelLibrary.= new HomeTrackerDatamodelLibrary.Home();
             //homeObject.HomeID = HomeId.Text;
-            int HID;
+            //int HID;
 
             //if (!int.TryParse(HomeId.Text, out HID))
             //{

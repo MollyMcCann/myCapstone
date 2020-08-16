@@ -9,7 +9,7 @@
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="VisibleIfTrueConverter" />
     </Window.Resources>
-    <Grid Margin="0,0,2,7">
+    <Grid Margin="0,2,2,5">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="593*"/>
             <ColumnDefinition Width="197*"/>
@@ -26,14 +26,14 @@
         <TextBlock HorizontalAlignment="Left" Margin="406,55,0,0" TextWrapping="Wrap" Text="Last Name" Visibility ="{Binding Path = IsChecked, ElementName=CheckAgent, Converter={StaticResource VisibleIfTrueConverter}}" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Margin="406,93,0,0" TextWrapping="Wrap" Text="Phone Number" Visibility="{Binding Path = IsChecked, ElementName=CheckAgent, Converter={StaticResource VisibleIfTrueConverter}}" VerticalAlignment="Top" Height="18" Width="86"/>
         <TextBlock HorizontalAlignment="Left" Margin="411,123,0,0" TextWrapping="Wrap" Text="Email" Visibility="{Binding Path = IsChecked, ElementName=CheckAgent, Converter={StaticResource VisibleIfTrueConverter}}" VerticalAlignment="Top" Height="20" Width="71"/>
-        <TextBlock HorizontalAlignment="Left" Margin="411,164,0,0" TextWrapping="Wrap" Text="Company" Visibility="{Binding Path = IsChecked, ElementName=CheckAgent, Converter={StaticResource VisibleIfTrueConverter}}" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="406,268,0,0" TextWrapping="Wrap" Text="Sales Amount" Visibility="{Binding Path = IsChecked, ElementName=CheckAgent, Converter={StaticResource VisibleIfTrueConverter}}" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Margin="411,205,0,0" TextWrapping="Wrap" Text="Comission Percentage" Visibility="{Binding Path = IsChecked, ElementName=CheckAgent, Converter={StaticResource VisibleIfTrueConverter}}" VerticalAlignment="Top" Height="37" Width="81"/>
         <TextBox HorizontalAlignment="Left" Height="23" Margin="504,15,0,0" TextWrapping="Wrap" x:Name="firstName" Visibility="{Binding Path = IsChecked, ElementName=CheckAgent, Converter={StaticResource VisibleIfTrueConverter}}" VerticalAlignment="Top" Width="120"/>
         <TextBox HorizontalAlignment="Left" Height="23" Margin="504,55,0,0" TextWrapping="Wrap" x:Name="lastName" Visibility="{Binding Path = IsChecked, ElementName=CheckAgent, Converter={StaticResource VisibleIfTrueConverter}}" VerticalAlignment="Top" Width="120"/>
         <TextBox HorizontalAlignment="Left" Height="23" Margin="504,88,0,0" TextWrapping="Wrap" x:Name="phoneNumber" Visibility="{Binding Path = IsChecked, ElementName=CheckAgent, Converter={StaticResource VisibleIfTrueConverter}}" VerticalAlignment="Top" Width="120"/>
         <TextBox HorizontalAlignment="Left" Height="23" Margin="504,123,0,0" TextWrapping="Wrap" x:Name="email" Visibility="{Binding Path = IsChecked, ElementName=CheckAgent, Converter={StaticResource VisibleIfTrueConverter}}" VerticalAlignment="Top" Width="120"/>
         <TextBox HorizontalAlignment="Left" Height="23" Margin="504,205,0,0" TextWrapping="Wrap" x:Name="comissionPercentage" Visibility="{Binding Path = IsChecked, ElementName=CheckAgent, Converter={StaticResource VisibleIfTrueConverter}}" VerticalAlignment="Top" Width="120"/>
-        <TextBox HorizontalAlignment="Left" Height="22" Margin="504,164,0,0" TextWrapping="Wrap" x:Name="Company" Visibility="{Binding Path = IsChecked, ElementName=CheckAgent, Converter={StaticResource VisibleIfTrueConverter}}" VerticalAlignment="Top" Width="120"/>
+        <TextBox HorizontalAlignment="Left" Height="22" Margin="504,268,0,0" TextWrapping="Wrap" x:Name="SaleAmount" Visibility="{Binding Path = IsChecked, ElementName=CheckAgent, Converter={StaticResource VisibleIfTrueConverter}}" VerticalAlignment="Top" Width="120"/>
         <!--Buyer Attributes-->
         <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="10,22,0,0" TextWrapping="Wrap" Text="First Name" Visibility="{Binding Path = IsChecked, ElementName=CheckBuyer, Converter={StaticResource VisibleIfTrueConverter}}" 
  VerticalAlignment="Top"/>
@@ -55,6 +55,8 @@
  VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.504,0.413"/>
         <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="103,172,0,0" TextWrapping="Wrap" x:Name ="creditRatingB" Visibility="{Binding Path = IsChecked, ElementName=CheckBuyer, Converter={StaticResource VisibleIfTrueConverter}}" 
  VerticalAlignment="Top" Width="120"/>
+        <ListBox x:Name="CompanyListBox" HorizontalAlignment="Left" Height="95" Margin="189,205,0,0" VerticalAlignment="Top" Width="157"/>
+        <TextBlock HorizontalAlignment="Left" Margin="189,154,0,0" TextWrapping="Wrap" Text=" Select your Agents Real Estate Company" VerticalAlignment="Top" Height="51" Width="100"/>
 
     </Grid>
 </Window>

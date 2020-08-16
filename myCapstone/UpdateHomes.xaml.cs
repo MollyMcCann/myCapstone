@@ -23,13 +23,17 @@ namespace myCapstone
         PeopleCollection peopleUd;
         HomeCollection HomeUd;
         HomeCollection homeCollection;
-        HomeSalesCollection homesalesCollection;
+        HomeSalesCollection homeSalesCollection;
+        RealEstateCompanyCollection realEstateCompaniesCollection;
 
-        public UpdateHomes(PeopleCollection people, HomeCollection homes)
+
+        public UpdateHomes(PeopleCollection people, HomeCollection homes, HomeSalesCollection homeSales,
+            RealEstateCompanyCollection realEstateCompanies)
         {
             InitializeComponent();
             peopleUd = people;
             HomeUd = homes;
+            homeSalesCollection = homeSales;
             Loaded += UpdateHomes_Loaded ;
         }
 
@@ -52,6 +56,11 @@ namespace myCapstone
                 this.HomeListBox.DisplayMemberPath = "Address";
                 this.HomeListBox.SelectedValuePath = "HomeID";
                 this.HomeListBox.ItemsSource = homeCollection;
+
+                realEstateCompaniesCollection = new RealEstateCompanyCollection(db.RealEstateCompanies.ToList());
+                this.CompanyListBox.DisplayMemberPath = "CompanyName";
+                this.CompanyListBox.SelectedValuePath = "CompanyId";
+                this.CompanyListBox.ItemsSource = realEstateCompaniesCollection;
 
 
             }
@@ -76,6 +85,23 @@ namespace myCapstone
                 }
 
                 agentObject.CommissionPercent = commPerc;
+                //todo: 1. add agent company to UI, listbox
+                //2. use a similar pattern to the house list box. get the DisplayValuePath will be Company Name
+                //    DisplayValuePath will be CompanyID
+                //3. will be similar to the comment below:
+                //if (HomeListBox.SelectedIndex == -1)
+                //{
+                //    return;
+                //    //todo tell user we cannot add the home
+                //}
+                //agentObject.CompanyID = (int)HomeListBox.SelectedValue;
+                if (CompanyListBox.SelectedIndex == -1)
+                {
+                    return;
+                   
+                }
+                agentObject.CompanyID = (int)CompanyListBox.SelectedValue;// is returning a null value...why?
+
 
                 personObject.Agent = agentObject;
                 peopleUd.Add(personObject);
@@ -90,9 +116,19 @@ namespace myCapstone
                 homeSalesObject.AgentID = personObject.Agent.AgentID;
                 homeSalesObject.MarketDate = DateTime.Now;
                 //homeSalesObject.CompanyID = personObject.Agent.CompanyID; 
-                //todo: add agent company to UI, listbox
-                homeSalesObject.CompanyID = 12;//fix this
+                homeSalesObject.CompanyID = CompanyListBox.SelectedIndex;//fix this
+                decimal SAmount;
 
+                if (!decimal.TryParse(SaleAmount.Text, out SAmount))
+                {
+                    // TODO: Notify user of failure
+                    return;
+                }
+
+               
+                homeSalesObject.SaleAmount = SAmount;//add UI for listing price add box for this
+
+                homeSalesCollection.Add(homeSalesObject);
             }
             else if(CheckBuyer.IsChecked.HasValue && (bool)CheckBuyer.IsChecked)
             {
