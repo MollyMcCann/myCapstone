@@ -20,9 +20,9 @@ namespace myCapstone
         public RealEstateCompanyCollection(List<RealEstateCompany> realEstateCompanies)
         {
             _realEstateCompanies = realEstateCompanies;
-            if (_realEstateCompanies.Count > 0)
+            if (_realEstateCompanies.Count > -1)
             {
-                position = 0;
+                position = -1;
             }
         }
         public RealEstateCompany Current => _realEstateCompanies[position];

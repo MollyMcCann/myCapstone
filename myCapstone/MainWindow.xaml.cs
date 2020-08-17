@@ -37,6 +37,7 @@ namespace myCapstone
             peopleCollection = new PeopleCollection();
             realEstateCompaniesCollection = new RealEstateCompanyCollection();
             InitializeComponent();
+            DataContext = this;
             using (HomeTrackerModel1 db = new HomeTrackerModel1())
             {
                 //retrieve data:
@@ -65,9 +66,7 @@ namespace myCapstone
             //    homes.Add(h);
             //}
             HomeDataGrid.DataContext = homeCollection;
-            //HomeDataGrid.DataContext = homeSalesCollection;
-            //HomeDataGrid.DataContext = peopleCollection;
-            //HomeDataGrid.DataContext = realEstateCompaniesCollection;
+           
         }
         private void exitButton_Click(object sender, RoutedEventArgs e)
         {
@@ -87,6 +86,26 @@ namespace myCapstone
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
             removeAHomeWindow.Show();
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            HomeDataGrid.Items.Refresh();
+        }
+
+        private void Button_Click_4(object sender, RoutedEventArgs e)
+        {
+            HomeDataGrid.DataContext = peopleCollection;
+        }
+
+        private void Button_Click_5(object sender, RoutedEventArgs e)
+        {
+            HomeDataGrid.DataContext = homeSalesCollection;
+        }
+
+        private void Button_Click_6(object sender, RoutedEventArgs e)
+        {
+            HomeDataGrid.DataContext = realEstateCompaniesCollection;
         }
     }
 }

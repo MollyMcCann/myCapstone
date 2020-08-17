@@ -5,12 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:myCapstone"
         mc:Ignorable="d"
-        Title="removeAHome" Height="291" Width="264.5">
+        Title="removeAHome" Height="292" Width="369.5">
     <Grid>
         <TextBlock HorizontalAlignment="Left" Margin="28,32,0,0" TextWrapping="Wrap" Text="Select a Home to Remove" VerticalAlignment="Top"/>
-        <ListBox x:Name="RemoveListBox"  HorizontalAlignment="Left" Height="132" Margin="28,84,0,0" VerticalAlignment="Top" Width="100" SelectionChanged="RemoveListBox_SelectionChanged"/>
-        <Button Content="Remove!" HorizontalAlignment="Left" Margin="146,169,0,0" VerticalAlignment="Top" Width="74" Click="Button_Click"/>
-        <Button Content="Exit!" HorizontalAlignment="Left" Margin="146,212,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_1"/>
+        <ListBox x:Name="RemoveListBox" ItemsSource="{Binding homeCollection}" HorizontalAlignment="Left" Height="153" Margin="28,84,0,0" VerticalAlignment="Top" Width="185" SelectionChanged="RemoveListBox_SelectionChanged"/>
+        <Button Content="Remove!" HorizontalAlignment="Left" Margin="268,171,0,0" VerticalAlignment="Top" Width="74" Click="Button_Click"/>
+        <Button Content="Exit!" HorizontalAlignment="Left" Margin="267,217,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_1"/>
 
     </Grid>
 </Window>

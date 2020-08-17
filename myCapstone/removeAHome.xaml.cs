@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,16 +25,16 @@ namespace myCapstone
         PeopleCollection peopleRM;
         HomeCollection homesRM;
         HomeCollection homeCollection;
-        //HomeSalesCollection homeSalesCollection;
+        HomeSalesCollection homeSalesCollection;
         //RealEstateCompanyCollection realEstateCompaniesCollection;
-
+       
+       // public ObservableCollection<HomeCollection> HomesCollection { get; set; }
         public removeAHome(PeopleCollection people, HomeCollection homes)
         {
             InitializeComponent();
             peopleRM = people;
             homesRM = homes;
-            RemoveListBox.DataContext = this;
-
+           
             Loaded += RemoveAHome_Loaded;
         }
 
@@ -45,21 +47,23 @@ namespace myCapstone
         {
             using (var db = new HomeTrackerModel1())
             {
-                homeCollection = new HomeCollection(db.Homes.ToList());
+               var homes = new HomeCollection(db.Homes.ToList());
                 this.RemoveListBox.DisplayMemberPath = "Address";
                 this.RemoveListBox.SelectedValuePath = "HomeID";
-                this.RemoveListBox.ItemsSource = homeCollection;
+               this.RemoveListBox.ItemsSource = homes;
 
             }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-              RemoveListBox.Items.RemoveAt
-
-            (RemoveListBox.Items.IndexOf(RemoveListBox.SelectedItem));
+           var Items = RemoveListBox.Items.IndexOf(RemoveListBox.SelectedItem);
+           
+            RemoveListBox.Items.Remove(RemoveListBox.SelectedItem);//this line is throwing an exception
 
             RemoveListBox.Items.Refresh();
+            
+
 
 
         }
@@ -72,6 +76,16 @@ namespace myCapstone
         private void RemoveListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
            
+        }
+    }
+
+    internal class ObservableCollection : HomeCollection
+    {
+        private HomeCollection homeCollection;
+
+        public ObservableCollection(HomeCollection homeCollection)
+        {
+            this.homeCollection = homeCollection;
         }
     }
 }

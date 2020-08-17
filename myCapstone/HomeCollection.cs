@@ -82,6 +82,12 @@ namespace myCapstone
          //   throw new NotImplementedException();
         }
 
+        public void Remove()
+        {
+            //figure out what to put in here
+
+        }
+
         public IEnumerator<Home> GetEnumerator()
         {
             return this;

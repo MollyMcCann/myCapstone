@@ -7,11 +7,11 @@
         mc:Ignorable="d"
         Title="AddHome" Height="450" Width="800">
     <Grid>
-        <TextBlock HorizontalAlignment="Left" Height="15" Margin="386,32,0,0" TextWrapping="Wrap" Text="Enter Address" VerticalAlignment="Top" Width="77"/>
-        <TextBlock HorizontalAlignment="Left" Margin="59,32,0,0" TextWrapping="Wrap" Text="Enter Home Id" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Height="15" Margin="388,81,0,0" TextWrapping="Wrap" Text="Enter Address" VerticalAlignment="Top" Width="77"/>
+        <TextBlock HorizontalAlignment="Left" Margin="59,32,0,0" TextWrapping="Wrap" Text="Add a Home:" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Margin="59,81,0,0" TextWrapping="Wrap" Text="Enter City" VerticalAlignment="Top" RenderTransformOrigin="0.529,-0.5"/>
         <TextBlock HorizontalAlignment="Left" Margin="64,125,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.415,2.702"><Run Text="Enter Zip Code"/></TextBlock>
-        <TextBlock HorizontalAlignment="Left" Margin="391,86,0,0" TextWrapping="Wrap" Text="Enter State" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5">
+        <TextBlock HorizontalAlignment="Left" Margin="391,121,0,0" TextWrapping="Wrap" Text="Enter State" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5">
             <TextBlock.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -27,10 +27,9 @@
         <TextBlock HorizontalAlignment="Left" Margin="59,279,0,0" TextWrapping="Wrap" Text="Add phone Number" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Margin="63,319,0,0" TextWrapping="Wrap" Text="Add email" VerticalAlignment="Top" RenderTransformOrigin="0.537,2.187"/>
         <TextBlock HorizontalAlignment="Left" Margin="59,359,0,0" TextWrapping="Wrap" Text="Add Perferred Lender" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="176,32,0,0" TextWrapping="Wrap" x:Name="HomeId" VerticalAlignment="Top" Width="120"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="481,32,0,0" TextWrapping="Wrap" x:Name="Address" VerticalAlignment="Top" Width="120"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="481,81,0,0" TextWrapping="Wrap" x:Name="Address" VerticalAlignment="Top" Width="120"/>
         <TextBox HorizontalAlignment="Left" Height="23" Margin="176,81,0,0" TextWrapping="Wrap" x:Name ="City" VerticalAlignment="Top" Width="120"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="481,81,0,0" TextWrapping="Wrap" x:Name="State" VerticalAlignment="Top" Width="120"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="481,118,0,0" TextWrapping="Wrap" x:Name="State" VerticalAlignment="Top" Width="120"/>
         <TextBox HorizontalAlignment="Left" Height="23" Margin="198,204,0,0" TextWrapping="Wrap" x:Name="firstName" VerticalAlignment="Top" Width="120"/>
         <TextBox HorizontalAlignment="Left" Height="23" Margin="198,241,0,0" TextWrapping="Wrap" x:Name  ="LastName" VerticalAlignment="Top" Width="120"/>
         <TextBox HorizontalAlignment="Left" Height="23" Margin="198,279,0,0" TextWrapping="Wrap" x:Name= "PhoneNumber" VerticalAlignment="Top" Width="120"/>
