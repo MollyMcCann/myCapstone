@@ -82,9 +82,9 @@ namespace myCapstone
          //   throw new NotImplementedException();
         }
 
-        public void Remove()
+        public void Remove(Home home)
         {
-            //figure out what to put in here
+            bool Remove(home)//figure out this method
 
         }
 
