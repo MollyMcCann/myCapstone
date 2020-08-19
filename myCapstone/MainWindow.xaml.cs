@@ -90,7 +90,16 @@ namespace myCapstone
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
-            HomeDataGrid.Items.Refresh();
+            using (HomeTrackerModel1 db = new HomeTrackerModel1())
+            {
+                //retrieve data:
+                homeCollection = new HomeCollection(db.Homes.ToList());
+                homeSalesCollection = new HomeSalesCollection(db.HomeSales.ToList());
+                peopleCollection = new PeopleCollection(db.People.ToList());
+                realEstateCompaniesCollection = new RealEstateCompanyCollection(db.RealEstateCompanies.ToList());
+            }
+
+            HomeDataGrid.DataContext = homeCollection;
         }
 
         private void Button_Click_4(object sender, RoutedEventArgs e)

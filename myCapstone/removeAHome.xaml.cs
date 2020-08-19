@@ -24,8 +24,6 @@ namespace myCapstone
     {
         PeopleCollection peopleRM;
         HomeCollection homesRM;
-        HomeCollection homeCollection;
-        HomeSalesCollection homeSalesCollection;
         //RealEstateCompanyCollection realEstateCompaniesCollection;
        
        // public ObservableCollection<HomeCollection> HomesCollection { get; set; }
@@ -34,8 +32,15 @@ namespace myCapstone
             InitializeComponent();
             peopleRM = people;
             homesRM = homes;
-           
+
             Loaded += RemoveAHome_Loaded;
+            Closing += RemoveAHome_Closing;
+        }
+
+        private void RemoveAHome_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            e.Cancel = true;
+            this.Visibility = Visibility.Hidden;
         }
 
         private void RemoveAHome_Loaded(object sender, RoutedEventArgs e)
@@ -47,25 +52,18 @@ namespace myCapstone
         {
             using (var db = new HomeTrackerModel1())
             {
-               var homes = new HomeCollection(db.Homes.ToList());
+                homesRM = new HomeCollection(db.Homes.ToList());
                 this.RemoveListBox.DisplayMemberPath = "Address";
                 this.RemoveListBox.SelectedValuePath = "HomeID";
-               this.RemoveListBox.ItemsSource = homes;
+                this.RemoveListBox.ItemsSource = homesRM;
 
             }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-           var Items = RemoveListBox.Items.IndexOf(RemoveListBox.SelectedItem);
-           
-            RemoveListBox.Items.Remove(RemoveListBox.SelectedItem);//this line is throwing an exception
-
-            RemoveListBox.Items.Refresh();
-            
-
-
-
+            homesRM.Remove((Home)RemoveListBox.SelectedItem);
+            this.RemoveListBox.ItemsSource = homesRM;
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)

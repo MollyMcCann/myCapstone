@@ -82,15 +82,34 @@ namespace myCapstone
          //   throw new NotImplementedException();
         }
 
-        public void Remove(Home home)
+        public bool Remove(Home removeMe)
         {
-            bool Remove(home)//figure out this method
+            bool removed = false;
+            if (_homes.Remove(removeMe))
+            {
+                removed = true;
+                using (HomeTrackerModel1 db = new HomeTrackerModel1())
+                {
+                    var homeSalesToRemove = from hs in db.HomeSales
+                                            where hs.HomeID == removeMe.HomeID
+                                            select hs;
+                    try
+                    {
+                        foreach (var hs in homeSalesToRemove)
+                        {
+                            db.Entry(hs).State = EntityState.Deleted;
+                        }
 
-        }
-
-        public IEnumerator<Home> GetEnumerator()
-        {
-            return this;
+                        db.Entry(removeMe).State = EntityState.Deleted;
+                        db.SaveChanges();
+                    }
+                    catch (Exception ex)
+                    {
+                        //TODO: notify user
+                    }
+                }
+            }
+           return removed;
         }
 
         public bool MoveNext()
@@ -108,6 +127,11 @@ namespace myCapstone
             _homes.Sort();
         }
         IEnumerator IEnumerable.GetEnumerator()
+        {
+            return ((IEnumerable<Home>)_homes).GetEnumerator();
+        }
+
+        public IEnumerator<Home> GetEnumerator()
         {
             return ((IEnumerable<Home>)_homes).GetEnumerator();
         }

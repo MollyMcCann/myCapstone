@@ -55,11 +55,6 @@ namespace myCapstone
            // throw new NotImplementedException();
         }
 
-        public IEnumerator<RealEstateCompany> GetEnumerator()
-        {
-            return this;
-        }
-
         public bool MoveNext()
         {
             position++;
@@ -71,16 +66,19 @@ namespace myCapstone
             position = -1;
         }
 
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return (IEnumerator<RealEstateCompany>)this;
-        }
-
-
         public RealEstateCompany Get(int id)
         {
             return _realEstateCompanies.SingleOrDefault(re => re.CompanyID == id);
         }
 
+        public IEnumerator<RealEstateCompany> GetEnumerator()
+        {
+            return ((IEnumerable<RealEstateCompany>)_realEstateCompanies).GetEnumerator();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return ((IEnumerable<RealEstateCompany>)_realEstateCompanies).GetEnumerator();
+        }
     }
 }

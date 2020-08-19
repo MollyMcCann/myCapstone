@@ -25,6 +25,8 @@ namespace myCapstone
         HomeCollection homeCollection;
         HomeSalesCollection homeSalesCollection;
         RealEstateCompanyCollection realEstateCompaniesCollection;
+        HomeCollection listedHomes;
+        HomeSale homeSaleToSold;
 
 
         public UpdateHomes(PeopleCollection people, HomeCollection homes, HomeSalesCollection homeSales,
@@ -34,10 +36,17 @@ namespace myCapstone
             peopleUd = people;
             HomeUd = homes;
             homeSalesCollection = homeSales;
-            Loaded += UpdateHomes_Loaded ;
+            IsVisibleChanged += UpdateHomes_IsVisibleChanged;
+            Closing += UpdateHomes_Closing;
         }
 
-        private void UpdateHomes_Loaded(object sender, RoutedEventArgs e)
+        private void UpdateHomes_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            e.Cancel = true;
+            this.Visibility = Visibility.Hidden;
+        }
+
+        private void UpdateHomes_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
             LoadHomesList();
         }
@@ -47,11 +56,6 @@ namespace myCapstone
         {
             using (var db = new HomeTrackerModel1())
             {
-                //var homeList = db.Homes.OrderBy(h => h.HomeID).Select(h => new Home(){ HomeID = h.HomeID, Address = h.Address }).ToList();
-                //this.HomeListBox.DisplayMemberPath = "Address";
-                //this.HomeListBox.SelectedValuePath = "HomeID";
-                //this.HomeListBox.ItemsSource = homeList;
-
                 homeCollection = new HomeCollection(db.Homes.ToList());
                 this.HomeListBox.DisplayMemberPath = "Address";
                 this.HomeListBox.SelectedValuePath = "HomeID";
@@ -61,8 +65,6 @@ namespace myCapstone
                 this.CompanyListBox.DisplayMemberPath = "CompanyName";
                 this.CompanyListBox.SelectedValuePath = "CompanyID";
                 this.CompanyListBox.ItemsSource = realEstateCompaniesCollection;
-
-
             }
         }
 
@@ -72,6 +74,7 @@ namespace myCapstone
             {
                 try
                 {
+                    //TODO: only allow home to be listed once
                     Person personObject = new Person();
                     HomeTrackerDatamodelLibrary.Agent agentObject = new HomeTrackerDatamodelLibrary.Agent();
                     personObject.FirstName = firstName.Text;
@@ -158,35 +161,55 @@ namespace myCapstone
                     personObject.Buyer = buyerObject;
                     peopleUd.Add(personObject);
 
-                    HomeSale homeSalesObject = new HomeSale();
                     if (HomeListBox.SelectedIndex == -1)
                     {
                         return;
                         //todo tell user we cannot add the home
                     }
 
-                    homeSalesObject.HomeID = (int)HomeListBox.SelectedValue;
-                    homeSalesObject.SoldDate = DateTime.Now;
-                    decimal SAmount1;
+                    int selectedHomeID = (int)HomeListBox.SelectedValue;
+                    homeSaleToSold = (from hs in homeSalesCollection
+                                     where hs.HomeID == selectedHomeID
+                                      select hs).First();
 
-                    if (!decimal.TryParse(SoldAmount.Text, out SAmount1))
-                    {
-                        // TODO: Notify user of failure
-                        return;
-                    }
-                    homeSalesObject.SaleAmount = SAmount1;
-                    homeSalesObject.BuyerID = personObject.Buyer.BuyerID;
-                    homeSalesObject.CompanyID = CompanyListBox.SelectedIndex;//fix this
-                    homeSalesCollection.Add(homeSalesObject);
+                    homeSaleToSold.SoldDate = DateTime.Now;
+                    homeSaleToSold.BuyerID = personObject.Buyer.BuyerID;
 
+                    homeSalesCollection.Update(homeSaleToSold);
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
-
+                    //TODO: notify user
                 }
 
             }
 
+            this.Close();
+        }
+
+        private void CheckAgent_Checked(object sender, RoutedEventArgs e)
+        {
+            //TODO: Investigate possible bug
+            using (var db = new HomeTrackerModel1())
+            {
+                homeCollection = new HomeCollection(db.Homes.ToList());
+                this.HomeListBox.DisplayMemberPath = "Address";
+                this.HomeListBox.SelectedValuePath = "HomeID";
+                this.HomeListBox.ItemsSource = homeCollection;
+            }
+        }
+
+        private void CheckBuyer_Checked(object sender, RoutedEventArgs e)
+        {
+            var listedJoinQuerey = from home in homeCollection
+                                   join homeSale in homeSalesCollection on home.HomeID equals homeSale.HomeID
+                                   where homeSale.SoldDate == null
+                                   select home;
+
+            listedHomes = new HomeCollection(listedJoinQuerey.ToList());
+            this.HomeListBox.DisplayMemberPath = "Address";
+            this.HomeListBox.SelectedValuePath = "HomeID";
+            this.HomeListBox.ItemsSource = listedHomes;
         }
     }
 }

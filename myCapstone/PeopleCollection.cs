@@ -122,15 +122,6 @@ namespace myCapstone
             return _peopleList.SingleOrDefault(p => p.PersonID  == id);
         }
 
-
-
-        public IEnumerator<Person> GetEnumerator()
-        {
-            return this;
-        }
-
-
-
         public bool MoveNext()
         {
             position++;
@@ -143,6 +134,17 @@ namespace myCapstone
         {
             position = -1;
         }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return ((IEnumerable<Person>)_peopleList).GetEnumerator();
+        }
+
+        public IEnumerator<Person> GetEnumerator()
+        {
+            return ((IEnumerable<Person>)_peopleList).GetEnumerator();
+        }
+
         public int Length => _peopleList.Count;
 
         //object IEnumerator.Current => throw new NotImplementedException();
@@ -152,15 +154,7 @@ namespace myCapstone
             get => _peopleList[index];
             set => _peopleList[index] = value;
         }
-        IEnumerator<Person> IEnumerable<Person>.GetEnumerator()
-        {
-            return _peopleList.GetEnumerator();
-        }
 
-        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
-        {
-            return _peopleList.GetEnumerator();
-        }
     }
 
 

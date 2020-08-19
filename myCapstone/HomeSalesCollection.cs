@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,14 +22,26 @@ namespace myCapstone
         public HomeSalesCollection(List<HomeSale> homeSales)
         {
             _homeSales = homeSales;
-            if (_homeSales.Count > 0)
+            //if (_homeSales.Count > 0)
+            //{
+            //    position = 0;
+            //}
+        }
+        public HomeSale Current
+        {
+            get
             {
-                position = 0;
+                return _homeSales[position];
             }
         }
-        public HomeSale Current => _homeSales[position];
 
-        object IEnumerator.Current => _homeSales[position];
+        object IEnumerator.Current
+        {
+            get
+            {
+                return _homeSales[position];
+            }
+        }
 
         public void Add(HomeSale homeSale)
         {
@@ -51,6 +64,29 @@ namespace myCapstone
                         int i = 0;
                     }
                 }
+            }
+        }
+
+        public void Update(HomeSale homeSale)
+        {
+            if (homeSale == null)
+            {
+                return;
+            }
+
+            using (HomeTrackerModel1 db = new HomeTrackerModel1())
+            {
+                try
+                {
+                    db.Entry(homeSale).State = EntityState.Modified;
+                    db.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+                    //Todo: notify user
+                    int i = 0;
+                }
+
             }
         }
 
@@ -78,7 +114,7 @@ namespace myCapstone
 
         public IEnumerator<HomeSale> GetEnumerator()
         {
-            return this;
+            return _homeSales.GetEnumerator();
         }
 
         public bool MoveNext()
@@ -88,14 +124,19 @@ namespace myCapstone
         }
         public void Reset()
         {
-            position = -1;
+            position = 0;
         }
 
 
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return ((IEnumerable<HomeSale>)_homeSales).GetEnumerator();
-        }
+        //IEnumerator IEnumerable.GetEnumerator()
+        //{
+        //    return ((IEnumerable<HomeSale>)_homeSales).GetEnumerator();
+        //}
+
+        //public IEnumerator GetEnumerator()
+        //{
+        //    return _homeSales.GetEnumerator();
+        //}
 
         private int getLastId()
         {
@@ -108,6 +149,9 @@ namespace myCapstone
             return ret;
         }
 
-
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return ((IEnumerable<HomeSale>)_homeSales).GetEnumerator();
+        }
     }
 }
