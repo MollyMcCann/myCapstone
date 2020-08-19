@@ -94,10 +94,49 @@ namespace myCapstone
             HomeDataGrid.DataContext = homeCollection;
         }
 
-        private void Button_Click_4(object sender, RoutedEventArgs e)
+            private void Button_Click_4(object sender, RoutedEventArgs e)
         {
             HomeDataGrid.DataContext = peopleCollection;
+            HomeDataGrid.Columns.Clear();
+            DataGridTextColumn firstNameColumn = new DataGridTextColumn
+            {
+                Header = "First Name", // This is what the user sees
+                Binding = new Binding("FirstName") //This is the property to display from the Person class
+            };
+            HomeDataGrid.Columns.Add(firstNameColumn);
+
+            DataGridTextColumn lastNameColumn = new DataGridTextColumn
+            {
+                Header = "Last Name",
+                Binding = new Binding("LastName")
+            };
+            HomeDataGrid.Columns.Add(lastNameColumn);
+            DataGridTextColumn PersonIDColumn = new DataGridTextColumn
+            {
+                Header = "Person ID",
+                Binding = new Binding("PersonID")
+
+            };
+            HomeDataGrid.Columns.Add(PersonIDColumn);
+            DataGridTextColumn EmailColumn = new DataGridTextColumn
+            {
+                Header = "Email",
+                Binding = new Binding("Email")
+
+            };
+            HomeDataGrid.Columns.Add(EmailColumn);
+            DataGridTextColumn PhoneColumn = new DataGridTextColumn
+            {
+                Header = "Phone Number",
+                Binding = new Binding("Phone")
+
+            };
+            HomeDataGrid.Columns.Add(PhoneColumn);
+
+
         }
+
+
 
         private void Button_Click_5(object sender, RoutedEventArgs e)
         {
