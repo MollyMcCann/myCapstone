@@ -159,6 +159,7 @@ namespace myCapstone
                     }
 
                     int selectedHomeID = (int)HomeListBox.SelectedValue;
+                    
                     homeSaleToSold = (from hs in homeSalesCollection
                                      where hs.HomeID == selectedHomeID
                                       select hs).First();
@@ -180,7 +181,7 @@ namespace myCapstone
 
         private void CheckAgent_Checked(object sender, RoutedEventArgs e)
         {
-            //TODO: Investigate possible bug
+          
             using (var db = new HomeTrackerModel1())
             {
                 homeCollection = new HomeCollection(db.Homes.ToList());

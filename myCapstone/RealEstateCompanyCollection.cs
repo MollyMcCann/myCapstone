@@ -31,7 +31,7 @@ namespace myCapstone
         public void Add(RealEstateCompany realEstateCompany)
         {
             var re = _realEstateCompanies.SingleOrDefault(r => r.CompanyID == realEstateCompany.CompanyID);
-            if (re == null)//the r here might give us trouble later CHECK THIS
+            if (re == null)
             {
                 _realEstateCompanies.Add(realEstateCompany);
             }

@@ -24,9 +24,6 @@ namespace myCapstone
     {
         PeopleCollection peopleRM;
         HomeCollection homesRM;
-        //RealEstateCompanyCollection realEstateCompaniesCollection;
-       
-       // public ObservableCollection<HomeCollection> HomesCollection { get; set; }
         public removeAHome(PeopleCollection people, HomeCollection homes)
         {
             InitializeComponent();

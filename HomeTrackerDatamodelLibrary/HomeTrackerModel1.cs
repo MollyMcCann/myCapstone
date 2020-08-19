@@ -4,7 +4,7 @@ namespace HomeTrackerDatamodelLibrary
     using System.Data.Entity;
    
 
-    public partial class HomeTrackerModel1 : DbContext //add partial after class
+    public partial class HomeTrackerModel1 : DbContext 
     {
         public HomeTrackerModel1()
             : base("name=HomeTrackerModel1")

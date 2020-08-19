@@ -68,7 +68,6 @@
     <Compile Include="AddHome.xaml.cs">
       <DependentUpon>AddHome.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Collections.cs" />
     <Compile Include="ExceptionHandler.cs" />
     <Compile Include="HomeCollection.cs" />
     <Compile Include="MainWindow.xaml.cs" />

@@ -65,26 +65,26 @@ namespace myCapstone
 
                     try
                     {
-                        //db.People.Add(person);
+                        
                         db.Entry(person).State = EntityState.Added;
 
                         if (person.Owner != null)
                         {
                             person.Owner.OwnerID = person.PersonID;
                             db.Entry(person.Owner).State = EntityState.Added;
-                            //db.Owners.Add(person.Owner);
+                            
                         }
                         if (person.Agent != null)
                         {
                             person.Agent.AgentID = person.PersonID;
                             db.Entry(person.Agent).State = EntityState.Added;
-                            //db.Agents.Add(person.Agent);
+                            
                         }
                         if (person.Buyer != null)
                         {
                             person.Buyer.BuyerID = person.PersonID;
                             db.Entry(person.Buyer).State = EntityState.Added;
-                            //db.Buyers.Add(person.Buyer);
+                            
                         }
 
                         db.SaveChanges(); 
@@ -92,7 +92,7 @@ namespace myCapstone
                     catch (Exception ex )
                     {
                         int i = 0;
-                    }//todo
+                    }
                 }
             }
         }
@@ -117,7 +117,7 @@ namespace myCapstone
         }
 
 
-        public Person Get(int id)//check in on this
+        public Person Get(int id)
         {
             return _peopleList.SingleOrDefault(p => p.PersonID  == id);
         }
@@ -147,7 +147,6 @@ namespace myCapstone
 
         public int Length => _peopleList.Count;
 
-        //object IEnumerator.Current => throw new NotImplementedException();
 
         public Person this[int index]
         {

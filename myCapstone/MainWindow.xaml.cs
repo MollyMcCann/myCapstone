@@ -51,20 +51,12 @@ namespace myCapstone
 
             }
 
-            foreach (Home home in homeCollection)
-            {
-                //searchBox.Text = home.Address; //ADD THIS BACK EVENTUALLY, THIS WAS THE TEST TO SEE IF WE CAN CONNECT to db
 
-            }
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            //var homes = new List<Home>();
-            //foreach(Home h in homeCollection)
-            //{
-            //    homes.Add(h);
-            //}
+            
             HomeDataGrid.DataContext = homeCollection;
            
         }

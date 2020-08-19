@@ -70,8 +70,7 @@ namespace HomeTrackerDatamodelLibrary
                     context.HomeSales.Add(hs);
                 }
 
-
-                try//take this out later after fixing errors must include context.Savechanges
+                try
                 {
                     context.SaveChanges();
                 }
@@ -176,7 +175,7 @@ namespace HomeTrackerDatamodelLibrary
                 home.Address = h.Element("Address")?.Value.Trim();
                 home.City = h.Element("City").Value.Trim();
                 home.State = h.Element("State").Value.Trim();
-                home.Zip = h.Element("Zip").Value.Trim();//unsure about this small section, zip is an in right?
+                home.Zip = h.Element("Zip").Value.Trim();
                 home.OwnerID = int.Parse(h.Element("OwnerID").Value);
 
                 homes.Add(home);

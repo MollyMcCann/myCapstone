@@ -22,10 +22,7 @@ namespace myCapstone
         public HomeSalesCollection(List<HomeSale> homeSales)
         {
             _homeSales = homeSales;
-            //if (_homeSales.Count > 0)
-            //{
-            //    position = 0;
-            //}
+           
         }
         public HomeSale Current
         {
@@ -126,17 +123,6 @@ namespace myCapstone
         {
             position = 0;
         }
-
-
-        //IEnumerator IEnumerable.GetEnumerator()
-        //{
-        //    return ((IEnumerable<HomeSale>)_homeSales).GetEnumerator();
-        //}
-
-        //public IEnumerator GetEnumerator()
-        //{
-        //    return _homeSales.GetEnumerator();
-        //}
 
         private int getLastId()
         {
