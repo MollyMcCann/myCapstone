@@ -116,5 +116,10 @@ namespace myCapstone
         {
             HomeDataGrid.DataContext = realEstateCompaniesCollection;
         }
+
+        private void Button_Click_7(object sender, RoutedEventArgs e)
+        {
+            HomeDataGrid.DataContext = homeCollection;
+        }
     }
 }

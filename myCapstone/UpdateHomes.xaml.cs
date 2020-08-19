@@ -90,22 +90,13 @@ namespace myCapstone
                     }
 
                     agentObject.CommissionPercent = commPerc;
-                    //todo: 1. add agent company to UI, listbox
-                    //2. use a similar pattern to the house list box. get the DisplayValuePath will be Company Name
-                    //    DisplayValuePath will be CompanyID
-                    //3. will be similar to the comment below:
-                    //if (HomeListBox.SelectedIndex == -1)
-                    //{
-                    //    return;
-                    //    //todo tell user we cannot add the home
-                    //}
-                    //agentObject.CompanyID = (int)HomeListBox.SelectedValue;
+                  
                     if (CompanyListBox.SelectedIndex == -1)
                     {
                         return;
 
                     }
-                    agentObject.CompanyID = (int)CompanyListBox.SelectedValue;// is returning a null value...why?
+                    agentObject.CompanyID = (int)CompanyListBox.SelectedValue;
 
 
                     personObject.Agent = agentObject;
