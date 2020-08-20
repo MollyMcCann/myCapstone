@@ -80,7 +80,7 @@ namespace myCapstone
             removeAHomeWindow.Show();
         }
 
-        private void Button_Click_3(object sender, RoutedEventArgs e)
+        private void Button_Click_3(object sender, RoutedEventArgs e)//refresh db
         {
             using (HomeTrackerModel1 db = new HomeTrackerModel1())
             {
@@ -94,7 +94,7 @@ namespace myCapstone
             HomeDataGrid.DataContext = homeCollection;
         }
 
-            private void Button_Click_4(object sender, RoutedEventArgs e)
+            private void Button_Click_4(object sender, RoutedEventArgs e)//people collection
         {
             HomeDataGrid.DataContext = peopleCollection;
             HomeDataGrid.Columns.Clear();
