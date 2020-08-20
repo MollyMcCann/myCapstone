@@ -53,7 +53,7 @@ namespace myCapstone
                        
                         
                         home.OwnerID = home.Owner.OwnerID;
-                       
+                        home.Owner = null;
                         
                         db.Homes.Add(home);
                         db.SaveChanges(); 
