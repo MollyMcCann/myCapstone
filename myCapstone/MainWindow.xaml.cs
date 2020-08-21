@@ -225,6 +225,7 @@ namespace myCapstone
                 Binding = new Binding("Phone")
             };
             HomeDataGrid.Columns.Add(phoneNumberColumn);
+           
         }
 
         private void Button_Click_7(object sender, RoutedEventArgs e)
@@ -261,6 +262,12 @@ namespace myCapstone
                 Binding = new Binding("Zip")
             };
             HomeDataGrid.Columns.Add(zipColumn);
+            DataGridTextColumn ownerIDColumn = new DataGridTextColumn
+            {
+                Header = "Owner ID",
+                Binding = new Binding("OwnerID")
+            };
+            HomeDataGrid.Columns.Add(ownerIDColumn);
         }
 
     }

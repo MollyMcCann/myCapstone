@@ -45,7 +45,7 @@ namespace myCapstone
             if (h1 == null)
             {
                 _homes.Add(home);
-                using (HomeTrackerModel1 db = new HomeTrackerModel1())
+                using (HomeTrackerModel1  db = new HomeTrackerModel1())
                 {
 
                     try
@@ -58,7 +58,7 @@ namespace myCapstone
                         db.Homes.Add(home);
                         db.SaveChanges(); 
                     }
-                    catch (Exception ex)
+                    catch (Exception )
                     {
                         int i = 0;
                     }
@@ -95,7 +95,7 @@ namespace myCapstone
                                             select hs;
                     try
                     {
-                        foreach (var hs in homeSalesToRemove)
+                        foreach (var hs in homeSalesToRemove)//could have used single or default
                         {
                             db.Entry(hs).State = EntityState.Deleted;
                         }
